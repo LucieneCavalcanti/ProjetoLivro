@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jnlp spec="1.0+" codebase="http://www.javasoft.de/downloads/public/syntheticaaddons" href="demoCenter.jnlp" >
+
+  <information>
+    <title>SyntheticaAddons DemoCenter</title>
+    <vendor>JAVASOFT Software Engineering</vendor>
+    <homepage href="http://www.javasoft.de/" />
+
+    <description>SyntheticaAddons - a component library for Swing</description>
+    <description kind="short">The demo utilizes, presents and tests the SyntheticaAddons components.</description>
+    <description kind="tooltip">DemoCenter for SyntheticaAddons</description>
+
+    <offline-allowed />
+  </information>
+
+  <security>
+    <all-permissions />
+  </security>
+
+  <resources>
+    <j2se version="1.5+" />
+    <jar href="demoCenter.jar" />
+  </resources>
+
+  <application-desc main-class="de.javasoft.synthetica.democenter.DemoCenter" />
+
+</jnlp>
+
