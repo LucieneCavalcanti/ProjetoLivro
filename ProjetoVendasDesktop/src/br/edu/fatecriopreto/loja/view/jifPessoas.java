@@ -114,7 +114,6 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         painelPessoas = new javax.swing.JTabbedPane();
         jpCliente = new javax.swing.JPanel();
-        jdcDataNascimentoCliente = new com.toedter.calendar.JDateChooser();
         jtRGCliente = new javax.swing.JTextField();
         jlCnpj1 = new javax.swing.JLabel();
         jlIe1 = new javax.swing.JLabel();
@@ -122,6 +121,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jlIe5 = new javax.swing.JLabel();
         jlIe6 = new javax.swing.JLabel();
         jftCpfCliente = new javax.swing.JFormattedTextField();
+        jdcDataNascimentoCliente = new com.toedter.calendar.JDateChooser();
         jpFornecedor = new javax.swing.JPanel();
         jtIE = new javax.swing.JTextField();
         jlIe2 = new javax.swing.JLabel();
@@ -141,11 +141,11 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jlIe7 = new javax.swing.JLabel();
         jftCPFFuncionario = new javax.swing.JFormattedTextField();
         jlIe4 = new javax.swing.JLabel();
-        jdcDataNascimentoFuncionario = new com.toedter.calendar.JDateChooser();
         jlContato1 = new javax.swing.JLabel();
         jtCargo = new javax.swing.JTextField();
         jlContato2 = new javax.swing.JLabel();
         jtDepartamento = new javax.swing.JTextField();
+        jdcDataNascimentoFuncionario = new com.toedter.calendar.JDateChooser();
         jPanel7 = new javax.swing.JPanel();
         jcbCampoPesquisa = new javax.swing.JComboBox();
         jtPesquisa = new javax.swing.JTextField();
@@ -160,12 +160,11 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Cadastro de Pessoas");
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbConsultar.setText("Consultar");
         jbConsultar.setEnabled(false);
-        getContentPane().add(jbConsultar);
-        jbConsultar.setBounds(340, 540, 120, 30);
+        getContentPane().add(jbConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 120, 30));
 
         jbSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/accept.png"))); // NOI18N
         jbSalvar.setText("Salvar");
@@ -178,8 +177,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                 jbSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbSalvar);
-        jbSalvar.setBounds(100, 500, 120, 30);
+        getContentPane().add(jbSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 120, 30));
 
         jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/cancel.png"))); // NOI18N
         jbCancelar.setText("Cancelar");
@@ -189,8 +187,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                 jbCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbCancelar);
-        jbCancelar.setBounds(220, 500, 120, 30);
+        getContentPane().add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 120, 30));
 
         jbExcluir.setText("Excluir");
         jbExcluir.setEnabled(false);
@@ -199,13 +196,11 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                 jbExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jbExcluir);
-        jbExcluir.setBounds(340, 500, 120, 30);
+        getContentPane().add(jbExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 120, 30));
 
         jbAlterar.setText("Alterar");
         jbAlterar.setEnabled(false);
-        getContentPane().add(jbAlterar);
-        jbAlterar.setBounds(220, 540, 120, 30);
+        getContentPane().add(jbAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 120, 30));
 
         jbNovo.setText("Novo");
         jbNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -213,8 +208,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                 jbNovoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbNovo);
-        jbNovo.setBounds(100, 540, 120, 30);
+        getContentPane().add(jbNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 120, 30));
 
         jpPessoa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -384,11 +378,6 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         });
         jpCliente.setLayout(null);
 
-        jdcDataNascimentoCliente.setToolTipText("Digite a data de nascimento do Cliente");
-        jdcDataNascimentoCliente.setEnabled(false);
-        jpCliente.add(jdcDataNascimentoCliente);
-        jdcDataNascimentoCliente.setBounds(190, 160, 140, 20);
-
         jtRGCliente.setForeground(new java.awt.Color(0, 0, 204));
         jtRGCliente.setToolTipText("Digite o RG do Cliente");
         jtRGCliente.setEnabled(false);
@@ -430,6 +419,10 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jftCpfCliente.setEnabled(false);
         jpCliente.add(jftCpfCliente);
         jftCpfCliente.setBounds(140, 120, 120, 20);
+
+        jdcDataNascimentoCliente.setEnabled(false);
+        jpCliente.add(jdcDataNascimentoCliente);
+        jdcDataNascimentoCliente.setBounds(180, 160, 180, 20);
 
         painelPessoas.addTab("Cliente", jpCliente);
 
@@ -539,11 +532,6 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jpFuncionario.add(jlIe4);
         jlIe4.setBounds(60, 110, 160, 17);
 
-        jdcDataNascimentoFuncionario.setToolTipText("Digite a Data de Nascimento do Funcionário");
-        jdcDataNascimentoFuncionario.setEnabled(false);
-        jpFuncionario.add(jdcDataNascimentoFuncionario);
-        jdcDataNascimentoFuncionario.setBounds(230, 110, 160, 20);
-
         jlContato1.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
         jlContato1.setText("Cargo:");
         jpFuncionario.add(jlContato1);
@@ -567,6 +555,10 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jpFuncionario.add(jtDepartamento);
         jtDepartamento.setBounds(170, 200, 220, 20);
 
+        jdcDataNascimentoFuncionario.setEnabled(false);
+        jpFuncionario.add(jdcDataNascimentoFuncionario);
+        jdcDataNascimentoFuncionario.setBounds(210, 110, 180, 20);
+
         painelPessoas.addTab("Funcionário", jpFuncionario);
 
         jPanel6.add(painelPessoas);
@@ -580,6 +572,12 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jcbCampoPesquisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "id", "Nome", "CPF", "CNPJ", "Nome do Vendedor", "Telefone" }));
         jcbCampoPesquisa.setToolTipText("");
         jPanel7.add(jcbCampoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 120, -1));
+
+        jtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPesquisaKeyReleased(evt);
+            }
+        });
         jPanel7.add(jtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 350, -1));
 
         jLabel1.setText("Campo");
@@ -602,8 +600,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
 
         jTabbedPane2.addTab("Pesquisa", jPanel7);
 
-        getContentPane().add(jTabbedPane2);
-        jTabbedPane2.setBounds(10, 10, 550, 480);
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 480));
 
         setBounds(0, 0, 584, 610);
     }// </editor-fold>//GEN-END:initComponents
@@ -704,6 +701,38 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jdcDataNascimentoCliente.setDate(null);
         jtEmpresa.setText("");
     }//GEN-LAST:event_jpClienteFocusLost
+
+    private void jtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyReleased
+        try {
+            cabecalho = new Vector();
+            cabecalho.add("idPessoa");  //coluna 0
+            cabecalho.add("Nome"); // coluna 1
+            if(jcbCampoPesquisa.getSelectedIndex()==0){//id   
+                
+            }
+            if(jcbCampoPesquisa.getSelectedIndex()==1){//nome
+               
+            }
+            if(jcbCampoPesquisa.getSelectedIndex()==2){//cpf
+                cabecalho.add("CPF");
+            }
+            if(jcbCampoPesquisa.getSelectedIndex()==3){//cnpj
+                cabecalho.add("CNPJ");
+            }
+            if(jcbCampoPesquisa.getSelectedIndex()==4){//nome vendedor
+                cabecalho.add("Vendedor");
+            }
+            if(jcbCampoPesquisa.getSelectedIndex()==5){//telefone
+                cabecalho.add("Telefone");
+            }
+            jtbPesquisa.setModel(new DefaultTableModel(
+                    DAO.pesquisar(jcbCampoPesquisa.getSelectedIndex(),jtPesquisa.getText()),
+                    cabecalho));
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtPesquisaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

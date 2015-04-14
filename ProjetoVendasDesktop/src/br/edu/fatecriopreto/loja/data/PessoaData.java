@@ -13,6 +13,7 @@ import br.edu.fatecriopreto.loja.model.Telefone;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Vector;
 
 /**
  *
@@ -155,5 +156,40 @@ public class PessoaData extends Conexao{
         }
         return true;
     }
-    
+    public Vector pesquisar(int campo, String pesq) throws Exception {
+        Vector dados = new Vector();
+        String sql = "Select * from TabPessoas";
+        if(campo==0){ //id
+            sql+= " where idPessoa="+pesq+" order by idPessoa";
+        }
+        if(campo==1) {//nome
+            sql+= " where nome like '"+pesq+"%' order by nome";
+        }
+        if(campo==2) { //cpf
+            sql+=" , TabPessoaFisica where idPessoa=idPessoaFisica"+
+                 " and cpf like '"+pesq+"%' order by cpf";
+        }
+        if(campo==3) { //cnpj
+            sql+=" , TabPessoaJuridica where idPessoa=idPessoaJuridica"+
+                 " and cnpj like '"+pesq+"%' order by cnpj";
+        }
+        if(campo==4) { //fornecedor
+            sql+=" , TabPessoaJuridica, TabFornecedor"+
+                 " where idPessoa=idPessoaJuridica"+
+                 " and idPessoaJuridica=idFornecedor"+
+                 " and nomeVendedor like '"+pesq+"%' order by nomeVendedor";
+        }
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Vector novalinha = new Vector();
+            novalinha.add(rs.getString("idPessoa"));
+            novalinha.add(rs.getString("nome"));
+            if(campo==2)  novalinha.add(rs.getString("cpf"));
+            if(campo==3)  novalinha.add(rs.getString("cnpj"));
+            if(campo==4)  novalinha.add(rs.getString("nomeVendedor"));
+            dados.add(novalinha);
+        }
+        return dados;
+    }
 }
