@@ -707,12 +707,6 @@ public class jifPessoas extends javax.swing.JInternalFrame {
             cabecalho = new Vector();
             cabecalho.add("idPessoa");  //coluna 0
             cabecalho.add("Nome"); // coluna 1
-            if(jcbCampoPesquisa.getSelectedIndex()==0){//id   
-                
-            }
-            if(jcbCampoPesquisa.getSelectedIndex()==1){//nome
-               
-            }
             if(jcbCampoPesquisa.getSelectedIndex()==2){//cpf
                 cabecalho.add("CPF");
             }
@@ -726,8 +720,8 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                 cabecalho.add("Telefone");
             }
             jtbPesquisa.setModel(new DefaultTableModel(
-                    DAO.pesquisar(jcbCampoPesquisa.getSelectedIndex(),jtPesquisa.getText()),
-                    cabecalho));
+                    DAO.pesquisar(jcbCampoPesquisa.getSelectedIndex(),
+                            jtPesquisa.getText()),cabecalho));
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, "Erro: "
                     + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

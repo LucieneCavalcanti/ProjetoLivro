@@ -179,6 +179,10 @@ public class PessoaData extends Conexao{
                  " and idPessoaJuridica=idFornecedor"+
                  " and nomeVendedor like '"+pesq+"%' order by nomeVendedor";
         }
+        if(campo==5){
+            sql+=" as p, TabTelefones as t where p.idPessoa=t.idPessoa"+
+                 " and numero like'"+pesq+"%' order by numero";
+        }
         PreparedStatement ps = getConexao().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -188,6 +192,9 @@ public class PessoaData extends Conexao{
             if(campo==2)  novalinha.add(rs.getString("cpf"));
             if(campo==3)  novalinha.add(rs.getString("cnpj"));
             if(campo==4)  novalinha.add(rs.getString("nomeVendedor"));
+            if(campo==5)  novalinha.add("["+rs.getString("tipo")+"] " + 
+                    "(" + rs.getString("ddd")+") - " 
+                    + rs.getString("numero"));
             dados.add(novalinha);
         }
         return dados;
