@@ -193,7 +193,7 @@ public class PessoaData extends Conexao{
             if(campo==2)  novalinha.add(rs.getString("cpf"));
             if(campo==3)  novalinha.add(rs.getString("cnpj"));
             if(campo==4)  novalinha.add(rs.getString("nomeVendedor"));
-            if(campo==5)  novalinha.add("["+rs.getString("tipo")+"] " + 
+            if(campo==5)  novalinha.add("[ "+rs.getString("tipo")+" ] " + 
                     "(" + rs.getString("ddd")+") - " 
                     + rs.getString("numero"));
             dados.add(novalinha);

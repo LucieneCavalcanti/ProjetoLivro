@@ -735,9 +735,10 @@ public class jifPessoas extends javax.swing.JInternalFrame {
 
     private void jtbPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbPesquisaMouseClicked
         try {
-            if(jtbPesquisa.getSelectedRow()>0){
+            if(jtbPesquisa.getSelectedRow()>0){ //se tem linha selecionada
                 int id=Integer.parseInt(jtbPesquisa.getModel().
-                        getValueAt(jtbPesquisa.getSelectedRow(), 0).toString());
+                        getValueAt(jtbPesquisa.getSelectedRow(), 0)
+                        .toString());
                 objCli = DAO.obterCliente(id);
                 if(objCli!=null){
                     jtId.setText(""+objCli.getIdPessoa());
@@ -756,8 +757,8 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                     jcbSituacao.setSelectedItem(objCli.getSituacao().getDescricao()); //confirmar
                     jdcDataNascimentoCliente.setDate(objCli.getDataNascimento());
                     jlDataCadastro.setText(""+objCli.getDataCadastro());
-                    
-                    DefaultTableModel mp = (DefaultTableModel)jtbTelefones.getModel();
+                    DefaultTableModel mp = (DefaultTableModel)jtbTelefones.
+                            getModel();
                     for(int i=0;i<objCli.getTelefones().size();i++){
                         mp.addRow(new String[]{
                             objCli.getTelefones().get(i).getTipo(),
@@ -783,14 +784,19 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                     jtRGFuncionario.setText(objFun.getRg());
                     jcbUf.setSelectedItem(objFun.getUf());
                     jcbSituacao.setSelectedItem(objFun.getSituacao().getDescricao()); //confirmar
-                    jdcDataNascimentoCliente.setDate(objFun.getDataNascimento());
+                    jdcDataNascimentoFuncionario.setDate(objFun.getDataNascimento());
                     jlDataCadastro.setText(""+objFun.getDataCadastro());
                     DefaultTableModel mp = (DefaultTableModel)jtbTelefones.getModel();
-                    for(int i=0;i<objCli.getTelefones().size();i++){
+                    for(int i=0;i<objFun.getTelefones().size();i++){
                         mp.addRow(new String[]{
-                            objCli.getTelefones().get(i).getTipo(),
-                            objCli.getTelefones().get(i).getDdd(),
-                            objCli.getTelefones().get(i).getTelefone()});
+                            objFun.getTelefones().get(i).getTipo(),
+                            objFun.getTelefones().get(i).getDdd(),
+                            objFun.getTelefones().get(i).getTelefone()});
+                    }
+                } else {
+                    objForn = DAO.obterFornecedor(id);
+                    if(objForn!=null){
+                        
                     }
                 }}
             }

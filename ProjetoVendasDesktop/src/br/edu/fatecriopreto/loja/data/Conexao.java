@@ -18,7 +18,7 @@ public class Conexao {
             url = props.getProperty("url");
             driver = props.getProperty("driver");
             Class.forName(driver);
-            conexao = DriverManager.getConnection(url);
+            conexao = DriverManager.getConnection(url,"sa","dba");
             //System.out.println("conexao ok");
     }
     
