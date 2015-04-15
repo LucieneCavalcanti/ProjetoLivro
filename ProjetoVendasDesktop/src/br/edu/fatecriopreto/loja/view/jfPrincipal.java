@@ -52,6 +52,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jmCadastros = new javax.swing.JMenu();
         jmPessoas = new javax.swing.JMenuItem();
         jmProdutos = new javax.swing.JMenuItem();
+        jmiTipoMovimento = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
         jmSair = new javax.swing.JMenuItem();
         jmMovimentos = new javax.swing.JMenu();
@@ -89,7 +90,6 @@ public class jfPrincipal extends javax.swing.JFrame {
         jmCadastros.setText("Cadastros");
 
         jmPessoas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        jmPessoas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/status_online.png"))); // NOI18N
         jmPessoas.setText("Pessoas");
         jmPessoas.setToolTipText("Cadastro de Pessoas");
         jmPessoas.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +109,15 @@ public class jfPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastros.add(jmProdutos);
+
+        jmiTipoMovimento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        jmiTipoMovimento.setText("Tipo de Movimento");
+        jmiTipoMovimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiTipoMovimentoActionPerformed(evt);
+            }
+        });
+        jmCadastros.add(jmiTipoMovimento);
         jmCadastros.add(jSeparator1);
 
         jmSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
@@ -181,6 +190,12 @@ public class jfPrincipal extends javax.swing.JFrame {
        new br.edu.fatecriopreto.loja.relatorios.RelatorioCategorias();
     }//GEN-LAST:event_jmCategoriasActionPerformed
 
+    private void jmiTipoMovimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoMovimentoActionPerformed
+        jifTipoMovimento janela = new jifTipoMovimento();
+        jdJanelas.add(janela);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jmiTipoMovimentoActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -209,6 +224,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmRelatorios;
     private javax.swing.JMenuItem jmSair;
     private javax.swing.JMenuItem jmVenda;
+    private javax.swing.JMenuItem jmiTipoMovimento;
     // End of variables declaration//GEN-END:variables
 
     public boolean verificaFrame(JInternalFrame frame) { //construtor recebe o JDesktopPane e o JInternalFrame que deseja verififcar
