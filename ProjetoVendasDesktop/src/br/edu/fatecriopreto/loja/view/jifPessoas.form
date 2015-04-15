@@ -447,7 +447,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jlEmail6">
+            <Component class="javax.swing.JLabel" name="jlDataCadastro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Book Antiqua" size="14" style="3"/>
@@ -1146,6 +1146,9 @@
                       <Table columnCount="0" rowCount="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtbPesquisaMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

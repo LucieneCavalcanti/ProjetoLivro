@@ -9,6 +9,7 @@ import br.edu.fatecriopreto.loja.model.Cliente;
 import br.edu.fatecriopreto.loja.model.Fornecedor;
 import br.edu.fatecriopreto.loja.model.Funcionario;
 import br.edu.fatecriopreto.loja.model.Pessoa;
+import br.edu.fatecriopreto.loja.model.Situacao;
 import br.edu.fatecriopreto.loja.model.Telefone;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -198,5 +199,99 @@ public class PessoaData extends Conexao{
             dados.add(novalinha);
         }
         return dados;
+    }
+    public Cliente obterCliente(int id) throws Exception {
+        Cliente obj = null;
+        String sql = "Select * from TabPessoas as p, TabPessoaFisica as f, "
+         + "TabClientes as c, TabSituacoes as s "
+         + "where p.idPessoa=? and p.idPessoa=f.idPessoaFisica "
+         + "and f.idPessoaFisica=c.idCliente "
+         + "and p.idSituacao=s.idSituacao";
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            obj = new Cliente();
+            obj.setIdPessoa(rs.getInt("idPessoa"));
+            obj.setNome(rs.getString("nome"));
+            obj.setBairro(rs.getString("bairro"));
+            obj.setCep(rs.getString("cep"));
+            obj.setCidade(rs.getString("cidade"));
+            obj.setComplemento(rs.getString("complemento"));
+            obj.setCpf(rs.getString("cpf"));
+            obj.setDataCadastro(rs.getTimestamp("dataCadastro"));
+            obj.setDataNascimento(rs.getTimestamp("dataNascimento"));
+            obj.setEmail(rs.getString("email"));
+            obj.setEmpresa(rs.getString("empresa"));
+            obj.setEndereco(rs.getString("endereco"));
+            obj.setNumero(rs.getString("numero"));
+            obj.setRg(rs.getString("rg"));
+            obj.setUf(rs.getString("uf"));
+            obj.setSituacao(new Situacao(rs.getInt("idSituacao"),
+                    rs.getString("descricao")));
+            String sql2 = "Select * from TabTelefones where"
+                    + " idPessoa = ?";
+            PreparedStatement ps2 = getConexao().prepareStatement(sql2);
+            ps2.setInt(1,id);
+            ResultSet rs2 = ps2.executeQuery();
+            while(rs2.next()){
+                Telefone objTel = new Telefone();
+                objTel.setDdd(rs2.getString("ddd"));
+                objTel.setSequencia(rs2.getInt("sequencia"));
+                objTel.setTelefone(rs2.getString("numero"));
+                objTel.setTipo(rs2.getString("tipo"));
+                obj.adicionarTelefone(objTel);
+            }
+        }
+        return obj;
+    }
+    
+    public Funcionario obterFuncionario(int id) throws Exception {
+        Funcionario obj = null;
+        String sql = "Select * from TabPessoas as p, TabPessoaFisica as f, "
+         + "TabFuncionarios as fun, TabSituacoes as s "
+         + "where p.idPessoa=? and p.idPessoa=f.idPessoaFisica "
+         + "and f.idPessoaFisica=fun.idFuncionario "
+         + "and p.idSituacao=s.idSituacao";
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            obj = new Funcionario();
+            obj.setIdPessoa(rs.getInt("idPessoa"));
+            obj.setNome(rs.getString("nome"));
+            obj.setBairro(rs.getString("bairro"));
+            obj.setCep(rs.getString("cep"));
+            obj.setCidade(rs.getString("cidade"));
+            obj.setComplemento(rs.getString("complemento"));
+            obj.setCpf(rs.getString("cpf"));
+            obj.setDataCadastro(rs.getTimestamp("dataCadastro"));
+            obj.setDataNascimento(rs.getTimestamp("dataNascimento"));
+            obj.setEmail(rs.getString("email"));
+            obj.setCTPS(rs.getString("ctps"));
+            obj.setCargo(rs.getString("cargo"));
+            obj.setDepartamento(rs.getString("departamento"));
+            obj.setSenha(rs.getString("senha"));
+            obj.setEndereco(rs.getString("endereco"));
+            obj.setNumero(rs.getString("numero"));
+            obj.setRg(rs.getString("rg"));
+            obj.setUf(rs.getString("uf"));
+            obj.setSituacao(new Situacao(rs.getInt("idSituacao"),
+                    rs.getString("descricao")));
+            String sql2 = "Select * from TabTelefones where"
+                    + " idPessoa = ?";
+            PreparedStatement ps2 = getConexao().prepareStatement(sql2);
+            ps2.setInt(1,id);
+            ResultSet rs2 = ps2.executeQuery();
+            while(rs2.next()){
+                Telefone objTel = new Telefone();
+                objTel.setDdd(rs2.getString("ddd"));
+                objTel.setSequencia(rs2.getInt("sequencia"));
+                objTel.setTelefone(rs2.getString("numero"));
+                objTel.setTipo(rs2.getString("tipo"));
+                obj.adicionarTelefone(objTel);
+            }
+        }
+        return obj;
     }
 }

@@ -101,7 +101,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jtNumero = new javax.swing.JTextField();
         jlEmail5 = new javax.swing.JLabel();
         jtComplemento = new javax.swing.JTextField();
-        jlEmail6 = new javax.swing.JLabel();
+        jlDataCadastro = new javax.swing.JLabel();
         jtCidade = new javax.swing.JTextField();
         jftCep = new javax.swing.JFormattedTextField();
         jlEmail7 = new javax.swing.JLabel();
@@ -319,9 +319,9 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         jtComplemento.setEnabled(false);
         jpPessoa.add(jtComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 220, -1));
 
-        jlEmail6.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlEmail6.setText("xx/xx/xxxx");
-        jpPessoa.add(jlEmail6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 90, -1));
+        jlDataCadastro.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
+        jlDataCadastro.setText("xx/xx/xxxx");
+        jpPessoa.add(jlDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 90, -1));
 
         jtCidade.setForeground(new java.awt.Color(0, 0, 204));
         jtCidade.setToolTipText("Digite a cidade");
@@ -594,6 +594,11 @@ public class jifPessoas extends javax.swing.JInternalFrame {
 
             }
         ));
+        jtbPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbPesquisaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtbPesquisa);
 
         jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 100, 490, 320));
@@ -728,6 +733,72 @@ public class jifPessoas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtPesquisaKeyReleased
 
+    private void jtbPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbPesquisaMouseClicked
+        try {
+            if(jtbPesquisa.getSelectedRow()>0){
+                int id=Integer.parseInt(jtbPesquisa.getModel().
+                        getValueAt(jtbPesquisa.getSelectedRow(), 0).toString());
+                objCli = DAO.obterCliente(id);
+                if(objCli!=null){
+                    jtId.setText(""+objCli.getIdPessoa());
+                    jftCep.setText(objCli.getCep());
+                    jftCpfCliente.setText(objCli.getCpf());
+                    jtBairro.setText(objCli.getBairro());
+                    jtCidade.setText(objCli.getCidade());
+                    jtComplemento.setText(objCli.getComplemento());
+                    jtEmail.setText(objCli.getEmail());
+                    jtEmpresa.setText(objCli.getEmpresa());
+                    jtEndereco.setText(objCli.getEndereco());
+                    jtNome.setText(objCli.getNome());
+                    jtNumero.setText(objCli.getNumero());
+                    jtRGCliente.setText(objCli.getRg());
+                    jcbUf.setSelectedItem(objCli.getUf());
+                    jcbSituacao.setSelectedItem(objCli.getSituacao().getDescricao()); //confirmar
+                    jdcDataNascimentoCliente.setDate(objCli.getDataNascimento());
+                    jlDataCadastro.setText(""+objCli.getDataCadastro());
+                    DefaultTableModel mp = (DefaultTableModel)jtbTelefones.getModel();
+                    for(int i=0;i<objCli.getTelefones().size();i++){
+                        mp.addRow(new String[]{
+                            objCli.getTelefones().get(i).getTipo(),
+                            objCli.getTelefones().get(i).getDdd(),
+                            objCli.getTelefones().get(i).getTelefone()});
+                    }
+                } else {
+                objFun = DAO.obterFuncionario(id);
+                if(objFun!=null){
+                    jtId.setText(""+objFun.getIdPessoa());
+                    jftCep.setText(objFun.getCep());
+                    jftCPFFuncionario.setText(objFun.getCpf());
+                    jtBairro.setText(objFun.getBairro());
+                    jtCidade.setText(objFun.getCidade());
+                    jtComplemento.setText(objFun.getComplemento());
+                    jtEmail.setText(objFun.getEmail());
+                    jtCTPS.setText(objFun.getCTPS());
+                    jtCargo.setText(objFun.getCargo());
+                    jtDepartamento.setText(objFun.getDepartamento());
+                    jtEndereco.setText(objFun.getEndereco());
+                    jtNome.setText(objFun.getNome());
+                    jtNumero.setText(objFun.getNumero());
+                    jtRGFuncionario.setText(objFun.getRg());
+                    jcbUf.setSelectedItem(objFun.getUf());
+                    jcbSituacao.setSelectedItem(objFun.getSituacao().getDescricao()); //confirmar
+                    jdcDataNascimentoCliente.setDate(objFun.getDataNascimento());
+                    jlDataCadastro.setText(""+objFun.getDataCadastro());
+                    DefaultTableModel mp = (DefaultTableModel)jtbTelefones.getModel();
+                    for(int i=0;i<objCli.getTelefones().size();i++){
+                        mp.addRow(new String[]{
+                            objCli.getTelefones().get(i).getTipo(),
+                            objCli.getTelefones().get(i).getDdd(),
+                            objCli.getTelefones().get(i).getTelefone()});
+                    }
+                }}
+            }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+            + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtbPesquisaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -764,6 +835,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlContato;
     private javax.swing.JLabel jlContato1;
     private javax.swing.JLabel jlContato2;
+    private javax.swing.JLabel jlDataCadastro;
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlEmail1;
     private javax.swing.JLabel jlEmail10;
@@ -772,7 +844,6 @@ public class jifPessoas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlEmail3;
     private javax.swing.JLabel jlEmail4;
     private javax.swing.JLabel jlEmail5;
-    private javax.swing.JLabel jlEmail6;
     private javax.swing.JLabel jlEmail7;
     private javax.swing.JLabel jlEmail8;
     private javax.swing.JLabel jlEmail9;
