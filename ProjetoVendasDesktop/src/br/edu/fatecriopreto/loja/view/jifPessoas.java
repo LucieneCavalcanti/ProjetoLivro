@@ -756,6 +756,7 @@ public class jifPessoas extends javax.swing.JInternalFrame {
                     jcbSituacao.setSelectedItem(objCli.getSituacao().getDescricao()); //confirmar
                     jdcDataNascimentoCliente.setDate(objCli.getDataNascimento());
                     jlDataCadastro.setText(""+objCli.getDataCadastro());
+                    
                     DefaultTableModel mp = (DefaultTableModel)jtbTelefones.getModel();
                     for(int i=0;i<objCli.getTelefones().size();i++){
                         mp.addRow(new String[]{
