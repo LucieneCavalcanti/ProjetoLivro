@@ -21,6 +21,7 @@ public abstract class Pessoa {
     private List<Telefone> telefones; //muitos telefones
 
     public Pessoa() {
+        
         situacao = new Situacao();
         dataCadastro = new Timestamp(Calendar.
                 getInstance().getTime().getTime());
