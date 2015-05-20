@@ -23,19 +23,19 @@ public class datas {
     static SimpleDateFormat formataHora =
             new SimpleDateFormat("HH:mm:ss");
     
-    public static String formata_data_banco(String data){
+    public static String formatarDataBanco(String data){
         return formataBanco.format(data);
     }
 
-    public static String formata_data_brasileira(String data){
+    public static String formatarDataBrasil(String data){
         return formataBrasil.format(data);
 
     }
-    public static String pega_data_sistema(){
+    public static String pegarDataSistema(){
         java.util.Date data = new java.util.Date();
         return formataBrasil.format(data);
     }
-    public static String pega_data_extenso_brasileira(){
+    public static String pegarDataExtensoBrasileira(){
         // criamos um locale para o Brasil
         Locale localeBR = new Locale("pt", "BR");
         // vamos obter a data e hora atual
@@ -45,7 +45,7 @@ public class datas {
         DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, localeBR);
         return(df.format(agora.getTime()));
     }
-        public static String pega_hora_sistema(){
+        public static String pegarHoraSistema(){
         java.util.Date agora = new java.util.Date();
         return formataHora.format(agora);
     }

@@ -29,7 +29,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     /** Creates new form jfPrincipal */
     public jfPrincipal() {
         initComponents();
-        jlData.setText(datas.pega_data_extenso_brasileira());
+        jlData.setText(datas.pegarDataExtensoBrasileira());
 //        setExtendedState(MAXIMIZED_BOTH);
 
     }
