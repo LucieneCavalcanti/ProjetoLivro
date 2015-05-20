@@ -17,23 +17,31 @@ import javax.swing.JOptionPane;
 import br.edu.fatecriopreto.loja.model.Categoria;
 import br.edu.fatecriopreto.loja.model.Produto;
 import br.edu.fatecriopreto.loja.data.CategoriaData;
-import br.edu.fatecriopreto.loja.data.ProdutoDAO;
+import br.edu.fatecriopreto.loja.data.ProdutoData;
 
 /**
  *
  * @author Alunos
  */
 public class jifProdutos extends javax.swing.JInternalFrame {
-    Produto objProd;
+    Produto obj;
 //    ProdutoDAO DAO = new ProdutoDAO();
-    CategoriaData CategoriaDAO = new CategoriaData();
-    Vector <Categoria> categoria;
+    ProdutoData DAO;
+    Vector <Categoria> vetorCategorias;
     int acao = 0;
 
     /** Creates new form jifProdutos */
     public jifProdutos() {
         initComponents();
-        jc_Categoria.setEnabled(false);     
+        try {
+            obj = new Produto();
+            DAO = new ProdutoData();
+            vetorCategorias = CategoriaData.carregarCombo();
+            jcbCategoria.setModel(new DefaultComboBoxModel(vetorCategorias));
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }    
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,38 +59,16 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         jlCodigo = new javax.swing.JLabel();
         jlNome = new javax.swing.JLabel();
         jlCategoria = new javax.swing.JLabel();
-        jlTelefones = new javax.swing.JLabel();
         jlContato = new javax.swing.JLabel();
-        jftQtde = new javax.swing.JFormattedTextField();
-        br.edu.fatecriopreto.loja.extras.FormatarCampos.mascara_numero(jftQtde);
-        jftPrecoCusto = new javax.swing.JFormattedTextField();
         jtDescricao = new javax.swing.JTextField();
         jbSair = new javax.swing.JButton();
-        jc_Categoria = new javax.swing.JComboBox();
-        jlQtde = new javax.swing.JLabel();
+        jcbCategoria = new javax.swing.JComboBox();
         jlImagem = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Cadastro de Produtos");
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
-        });
         getContentPane().setLayout(null);
 
         jtCodigo.setToolTipText("Digite o código");
@@ -93,7 +79,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         jftPrecoVenda.setToolTipText("Digite o preço de venda");
         jftPrecoVenda = new br.edu.fatecriopreto.loja.extras.JMoneyField();
         getContentPane().add(jftPrecoVenda);
-        jftPrecoVenda.setBounds(170, 190, 90, 20);
+        jftPrecoVenda.setBounds(170, 130, 90, 20);
 
         jbConsultar.setText("Consultar");
         jbConsultar.setEnabled(false);
@@ -181,26 +167,10 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         getContentPane().add(jlCategoria);
         jlCategoria.setBounds(50, 100, 70, 17);
 
-        jlTelefones.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlTelefones.setText("Preço de Custo:");
-        getContentPane().add(jlTelefones);
-        jlTelefones.setBounds(50, 160, 120, 17);
-
         jlContato.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
         jlContato.setText("Preço de Venda:");
         getContentPane().add(jlContato);
-        jlContato.setBounds(50, 190, 120, 17);
-
-        jftQtde.setEditable(false);
-        jftQtde.setToolTipText("Digite a quantidade");
-        getContentPane().add(jftQtde);
-        jftQtde.setBounds(120, 130, 140, 20);
-
-        jftPrecoCusto.setEditable(false);
-        jftPrecoCusto.setToolTipText("Digite o preço de custo");
-        jftPrecoCusto = new br.edu.fatecriopreto.loja.extras.JMoneyField();
-        getContentPane().add(jftPrecoCusto);
-        jftPrecoCusto.setBounds(170, 160, 90, 20);
+        jlContato.setBounds(50, 130, 120, 17);
 
         jtDescricao.setEditable(false);
         jtDescricao.setToolTipText("Digite a descrição");
@@ -216,14 +186,9 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         getContentPane().add(jbSair);
         jbSair.setBounds(390, 250, 110, 23);
 
-        jc_Categoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<selecione>", "Limpeza", "Bebidas" }));
-        getContentPane().add(jc_Categoria);
-        jc_Categoria.setBounds(130, 100, 280, 20);
-
-        jlQtde.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlQtde.setText("Qtde:");
-        getContentPane().add(jlQtde);
-        jlQtde.setBounds(50, 130, 70, 17);
+        jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<selecione>", "Limpeza", "Bebidas" }));
+        getContentPane().add(jcbCategoria);
+        jcbCategoria.setBounds(130, 100, 280, 20);
 
         jlImagem.setText("Imagem");
         jlImagem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -236,16 +201,16 @@ public class jifProdutos extends javax.swing.JInternalFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
     boolean ok = false;
     try {
-        if(br.edu.fatecriopreto.loja.extras.Validacao.validar_campos(this)){
-            if (preencher_objeto()){
+        if(br.edu.fatecriopreto.loja.extras.Validacao.validarCampos(this)){
+            if (preencherObjeto()){
                 if (acao == 1)
                //     ok = DAO.Inclui(objProd);
                 if (acao == 2)
                 //    ok = DAO.Altera(objProd);
 
                 if (ok) {
-                    br.edu.fatecriopreto.loja.extras.Validacao.limpar_campos(this);
-                    br.edu.fatecriopreto.loja.extras.Validacao.desabilitar_campos(this);
+                    br.edu.fatecriopreto.loja.extras.Validacao.limparCampos(this);
+                    br.edu.fatecriopreto.loja.extras.Validacao.tratarCampos(this,false);
                     jbNovo.setEnabled(true);
                     jbSalvar.setEnabled(false);
                     jbCancelar.setEnabled(false);
@@ -266,8 +231,8 @@ public class jifProdutos extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        br.edu.fatecriopreto.loja.extras.Validacao.limpar_campos(this);
-        br.edu.fatecriopreto.loja.extras.Validacao.desabilitar_campos(this);
+        br.edu.fatecriopreto.loja.extras.Validacao.limparCampos(this);
+        br.edu.fatecriopreto.loja.extras.Validacao.tratarCampos(this,false);
         jbSalvar.setEnabled(false);
         jbCancelar.setEnabled(false);
         jbNovo.setEnabled(true);// TODO add your handling code here:
@@ -292,15 +257,15 @@ public class jifProdutos extends javax.swing.JInternalFrame {
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
     try{
     //   objProd = DAO.Obtem(Integer.parseInt(jtCodigo.getText()));
-       if (objProd == null){
+       if (obj == null){
            JOptionPane.showMessageDialog(this, "Registro não encontrado.");
        }
        else {
-           jtDescricao.setText(objProd.getDescricao());
-           jftQtde.setText(String.valueOf(objProd.getQuantidade()));
-           jftPrecoCusto.setText(String.valueOf(objProd.getPreco_custo()));
-           jftPrecoVenda.setText(String.valueOf(objProd.getPreco_venda()));
-           jc_Categoria.setSelectedItem(objProd.getCategoria().getDescricao().trim());
+//           jtDescricao.setText(objProd.getDescricao());
+//           jftQtde.setText(String.valueOf(objProd.getQuantidade()));
+//           jftPrecoCusto.setText(String.valueOf(objProd.getPreco_custo()));
+//           jftPrecoVenda.setText(String.valueOf(objProd.getPreco_venda()));
+//           jcbCategoria.setSelectedItem(objProd.getCategoria().getDescricao().trim());
      //      jdcData.setDate(objProd.getData());
            jtCodigo.setEditable(false);
            jbAlterar.setEnabled(true);
@@ -316,28 +281,16 @@ public class jifProdutos extends javax.swing.JInternalFrame {
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         acao = 1;
-        br.edu.fatecriopreto.loja.extras.Validacao.habilitar_campos(this);
+        br.edu.fatecriopreto.loja.extras.Validacao.tratarCampos(this,true);
         jbSalvar.setEnabled(true);
         jbCancelar.setEnabled(true);
         jbNovo.setEnabled(false);
-        jc_Categoria.setEnabled(true);
+        jcbCategoria.setEnabled(true);
 }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
         dispose();
 }//GEN-LAST:event_jbSairActionPerformed
-
-    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        try{
-        categoria = new Vector <Categoria>();
-        categoria = CategoriaDAO.CarregaCombo();
-        jc_Categoria.setModel(new DefaultComboBoxModel
-                (categoria));
-        }
-        catch(Exception erro){
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro.getMessage());
-        }
-    }//GEN-LAST:event_formInternalFrameOpened
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
     acao = 2;        // TODO add your handling code here:
@@ -357,32 +310,23 @@ public class jifProdutos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSair;
     private javax.swing.JButton jbSalvar;
-    private javax.swing.JComboBox jc_Categoria;
-    private javax.swing.JFormattedTextField jftPrecoCusto;
+    private javax.swing.JComboBox jcbCategoria;
     private javax.swing.JFormattedTextField jftPrecoVenda;
-    private javax.swing.JFormattedTextField jftQtde;
     private javax.swing.JLabel jlCategoria;
     private javax.swing.JLabel jlCodigo;
     private javax.swing.JLabel jlContato;
     private javax.swing.JLabel jlImagem;
     private javax.swing.JLabel jlNome;
-    private javax.swing.JLabel jlQtde;
-    private javax.swing.JLabel jlTelefones;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtDescricao;
     // End of variables declaration//GEN-END:variables
 
-    public boolean preencher_objeto() throws Exception{
-         objProd = new Produto();
-         objProd.setCodigo(Integer.parseInt(jtCodigo.getText()));
-         objProd.setDescricao(jtDescricao.getText());
-         objProd.setPreco_custo(Float.parseFloat(jftPrecoCusto.getText().replace(",", ".")));
-         objProd.setPreco_venda(Float.parseFloat(jftPrecoVenda.getText().replace(",", ".")));
-         objProd.setQuantidade(Integer.parseInt(jftQtde.getText().trim()));
-  //       objProd.setData(jdcData.getDate());
-         //objProd.setCategoria(CategoriaDAO.BuscarChave(jc_Categoria.getSelectedItem().toString()));
-         objProd.setCategoria(categoria.get(jc_Categoria.getSelectedIndex()));
-         
+    public boolean preencherObjeto() throws Exception{
+         obj.setIdProduto(Integer.parseInt(jtCodigo.getText()));
+         obj.setDescricao(jtDescricao.getText());
+         obj.setPreco(Float.parseFloat(jftPrecoVenda.getText().replace(",", ".")));
+         obj.setCategoria(vetorCategorias.get(jcbCategoria.getSelectedIndex()));
+         //estoque ?
          return true;
     }
     private boolean validarCampos(){
@@ -392,10 +336,10 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             jtCodigo.requestFocus();
             return false;
         }
-        if(jc_Categoria.getSelectedIndex()==0){
+        if(jcbCategoria.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(this, "Selecione o campo categoria", 
                     "Validação", JOptionPane.INFORMATION_MESSAGE);
-            jc_Categoria.requestFocus();
+            jcbCategoria.requestFocus();
             return false;
         }
         return true;

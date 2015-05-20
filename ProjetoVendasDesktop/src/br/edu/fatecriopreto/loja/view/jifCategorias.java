@@ -10,6 +10,7 @@
  */
 package br.edu.fatecriopreto.loja.view;
 
+import br.edu.fatecriopreto.loja.data.CategoriaData;
 import br.edu.fatecriopreto.loja.model.Categoria;
 import javax.swing.JOptionPane;
 import br.edu.fatecriopreto.loja.model.PessoaFisica;
@@ -27,6 +28,14 @@ public class jifCategorias extends javax.swing.JInternalFrame {
      */
     public jifCategorias() {
         initComponents();
+        try {
+            objCategoria = new Categoria();
+            DAO = new CategoriaData();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
 
     /**
@@ -148,7 +157,7 @@ public class jifCategorias extends javax.swing.JInternalFrame {
             if (br.edu.fatecriopreto.loja.extras.Validacao.validarCampos(this)) {
                 if (preencherObjeto()) {
                     //if(DAO.Inclui(objCategoria)){
-                    if (DAO.IncluiporProcedure(objCategoria)) {
+                    if (DAO.incluirPorProcedure(objCategoria)) {
                         br.edu.fatecriopreto.loja.extras.Validacao.limparCampos(this);
                         br.edu.fatecriopreto.loja.extras.Validacao.tratarCampos(this, false);
                         jbNovo.setEnabled(true);
@@ -208,18 +217,9 @@ public class jifCategorias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtNome;
     // End of variables declaration//GEN-END:variables
 
-    public boolean preencher_objeto() {
-
-        try {
-            objCategoria = new PessoaFisica();
-            objCategoria.setCodigo(Integer.parseInt(jtCodigo.getText()));
-            objCategoria.setNome(jtNome.getText());
-            return true;
-        } catch (Exception ERRO) {
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro"
-                    + ERRO.getMessage(),
-                    "Preencher objeto", 2);
-            return false;
-        }
+    public boolean preencherObjeto() throws Exception {
+        objCategoria.setIdCategoria(Integer.parseInt(jtCodigo.getText()));
+        objCategoria.setDescricao(jtNome.getText());
+        return true;
     }
 }

@@ -11,7 +11,7 @@ public class RelatorioCategorias {
 public RelatorioCategorias() {
   try 
   {
-      JRResultSetDataSource jrRS = new JRResultSetDataSource(new CategoriaData().Relatorio());
+      JRResultSetDataSource jrRS = new JRResultSetDataSource(new CategoriaData().relatorio());
       JasperPrint jasperPrint = JasperFillManager.fillReport(
       "D:\\LP II\\2009\\projeto_loja_v3\\src\\relatorios\\categorias2.jasper", new HashMap(), jrRS);
       JasperViewer.viewReport(jasperPrint,false);

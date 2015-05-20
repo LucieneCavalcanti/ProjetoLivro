@@ -17,16 +17,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import br.edu.fatecriopreto.loja.data.ProdutoDAO;
+import br.edu.fatecriopreto.loja.data.ProdutoData;
 
 /**
  *
  * @author Diretor
  */
-public class pesquisa extends javax.swing.JInternalFrame {
+public class jifPesquisaGeral extends javax.swing.JInternalFrame {
     Vector cabecalho;
     /** Creates new form pesquisa */
-    public pesquisa() {
+    public jifPesquisaGeral() {
         initComponents();
     }
 
@@ -147,14 +147,14 @@ public class pesquisa extends javax.swing.JInternalFrame {
      try {
         if (jc_tabela.getSelectedItem().toString().equals("Produtos")) {
             cabecalho = new Vector();
-            ProdutoDAO objDAO = new ProdutoDAO();
+            ProdutoData objDAO = new ProdutoData();
             cabecalho.addElement("Código");
             cabecalho.addElement("Descrição");
-            jtb_resultado.setModel(new DefaultTableModel(objDAO.Pesquisar(jt_argumento.getText()), cabecalho));
+            jtb_resultado.setModel(new DefaultTableModel(objDAO.pesquisar(jt_argumento.getText()), cabecalho));
             
         }
 
-     } catch (SQLException ex) {
+     } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ocorreu um erro ao carregar a pesquisa ..." + ex.getMessage(), "Pesquisar",JOptionPane.ERROR_MESSAGE);
      }
     }//GEN-LAST:event_jb_pesquisarActionPerformed

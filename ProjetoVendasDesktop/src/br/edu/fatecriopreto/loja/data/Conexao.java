@@ -22,12 +22,12 @@ public class Conexao {
             //System.out.println("conexao ok");
     }
     
-    protected Connection getConexao() throws SQLException
+    protected static Connection getConexao() throws SQLException
     {
            return conexao;
     }
     
-    protected void fechaConexao() throws SQLException{
+    protected static void fechaConexao() throws SQLException{
             conexao.close();
     }
     

@@ -35,6 +35,7 @@ public class splash extends javax.swing.JWindow {
         int width = 800;
         int height =600;
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        //centralizar
         int x = (screen.width-width)/2;
         int y = (screen.height-height)/2;
         setBounds(x,y,width,height);

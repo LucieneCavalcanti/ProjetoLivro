@@ -24,7 +24,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     jifPessoas objForn;
     jifCategorias objCli;
     jifProdutos objProd;
-    pesquisa objPesquisa;
+    jifPesquisaGeral objPesquisa;
 
     /** Creates new form jfPrincipal */
     public jfPrincipal() {

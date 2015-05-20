@@ -294,4 +294,8 @@ public class PessoaData extends Conexao{
         }
         return obj;
     }
+
+    public Fornecedor obterFornecedor(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

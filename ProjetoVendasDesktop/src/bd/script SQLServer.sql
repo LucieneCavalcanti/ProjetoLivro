@@ -85,7 +85,9 @@ create table TabPermissoesUsuario(
 	sequencia int not null primary key identity,
 	idUsuario int not null references TabUsuarios,
 	idModulo int not null references TabModulos,
-	niveldeAcesso int not null);
+	niveldeAcesso int not null,
+        CONSTRAINT pk_PermissoesUsuario primary key(idUsuario,idModulo,niveldeAcesso)
+);
 	
 
 create table TabCategorias(

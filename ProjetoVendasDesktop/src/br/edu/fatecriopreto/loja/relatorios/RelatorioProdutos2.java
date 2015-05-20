@@ -11,7 +11,7 @@ import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
-import br.edu.fatecriopreto.loja.data.ProdutoDAO;
+import br.edu.fatecriopreto.loja.data.ProdutoData;
 
 /**
  *
@@ -36,7 +36,7 @@ public RelatorioProdutos2(){
         
 
 
-      JRResultSetDataSource jrRS = new JRResultSetDataSource(new ProdutoDAO().Relatorio());
+      JRResultSetDataSource jrRS = new JRResultSetDataSource(new ProdutoData().Relatorio());
 
       JasperPrint jasperPrint = JasperFillManager.fillReport(
       "C:\\Luciene\\2009\\projeto_loja_v3\\src\\relatorios\\rel_produtos2.jasper", new HashMap(), jrRS);
