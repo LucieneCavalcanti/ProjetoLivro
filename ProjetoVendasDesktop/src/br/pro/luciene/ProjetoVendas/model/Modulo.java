@@ -13,4 +13,29 @@ package br.pro.luciene.ProjetoVendas.model;
 public class Modulo {
     private int idModulo;
     private String descricao;
+
+    public Modulo() {
+    }
+
+    public Modulo(int idModulo, String descricao) {
+        this.idModulo = idModulo;
+        this.descricao = descricao;
+    }
+
+    public int getIdModulo() {
+        return idModulo;
+    }
+
+    public void setIdModulo(int idModulo) {
+        this.idModulo = idModulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
 }
