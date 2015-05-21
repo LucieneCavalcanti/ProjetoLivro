@@ -20,6 +20,7 @@ public class Saida {
     Funcionario funcionario;
     double comissao;
     Timestamp dataSaida;
+    double desconto;
     Situacao situacao;
     List<ItemSaida> itensSaida;
 }
