@@ -124,6 +124,7 @@ create table TabSaidas(
 	idFuncionario int not null references TabFuncionarios,
 	comissao decimal(10,2),
 	dataSaida date not null,
+        desconto decimal(10,2),
 	idSituacao int not null references TabSituacoes
 );
 
