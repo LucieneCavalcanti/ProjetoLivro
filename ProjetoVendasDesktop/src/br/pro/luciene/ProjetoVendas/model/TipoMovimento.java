@@ -51,4 +51,7 @@ public class TipoMovimento {
     public void setTipoLancamento(int tipoLancamento) {
         this.tipoLancamento = tipoLancamento;
     }
+    public String toString(){
+        return descricao;
+    }
 }

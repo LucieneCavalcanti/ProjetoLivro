@@ -40,5 +40,7 @@ public class Fornecedor extends PessoaJuridica {
     public void setNomeVendedor(String nomeVendedor) {
         this.nomeVendedor = nomeVendedor;
     }
-
+public String toString() {
+        return getNome();
+    }
 }

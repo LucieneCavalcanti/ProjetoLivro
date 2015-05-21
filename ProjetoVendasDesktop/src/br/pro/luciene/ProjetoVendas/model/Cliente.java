@@ -31,5 +31,7 @@ public class Cliente extends PessoaFisica{
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
-    
+    public String toString() {
+        return getNome();
+    }
 }
