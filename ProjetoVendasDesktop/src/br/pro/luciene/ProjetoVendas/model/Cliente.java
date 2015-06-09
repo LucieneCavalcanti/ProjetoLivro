@@ -13,9 +13,12 @@ import java.util.List;
  *
  * @author Luciene
  */
-public class Cliente extends PessoaFisica{
+public class Cliente extends 
+        PessoaFisica{
     private String empresa;
-
+public void lerDados(){
+    
+}
     public Cliente() {
     }
 

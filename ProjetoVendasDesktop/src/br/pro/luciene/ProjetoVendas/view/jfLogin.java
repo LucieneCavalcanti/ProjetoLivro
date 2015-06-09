@@ -66,7 +66,6 @@ public class jfLogin extends javax.swing.JFrame {
         getContentPane().add(jpfSenha);
         jpfSenha.setBounds(100, 80, 130, 20);
 
-        jbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/flag_red.png"))); // NOI18N
         jbSair.setText("Sair");
         jbSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +75,6 @@ public class jfLogin extends javax.swing.JFrame {
         getContentPane().add(jbSair);
         jbSair.setBounds(230, 170, 130, 30);
 
-        jbAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/flag_green.png"))); // NOI18N
         jbAcessar.setText("Acessar");
         jbAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +102,6 @@ public class jfLogin extends javax.swing.JFrame {
         jLabel4.setText("Senha");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 80, 70, 20);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/imagens/fundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 420, 230);
 

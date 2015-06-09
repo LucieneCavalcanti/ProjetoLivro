@@ -78,9 +78,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbSair">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/edu/fatecriopreto/loja/icones/flag_red.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
       <Events>
@@ -94,9 +91,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbAcessar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/edu/fatecriopreto/loja/icones/flag_green.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Acessar"/>
       </Properties>
       <Events>
@@ -146,11 +140,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/edu/fatecriopreto/loja/imagens/fundo.png"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="420" height="230"/>

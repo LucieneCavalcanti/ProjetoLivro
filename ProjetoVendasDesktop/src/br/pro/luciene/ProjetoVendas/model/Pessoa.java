@@ -20,6 +20,7 @@ public abstract class Pessoa {
     private Timestamp dataCadastro;
     private List<Telefone> telefones; //muitos telefones
 
+    //public abstract void lerDados();
     public Pessoa() {
         
         situacao = new Situacao();

@@ -6,18 +6,25 @@
 
 package br.pro.luciene.ProjetoVendas.view;
 
+import br.pro.luciene.ProjetoVendas.data.SituacaoData;
+import br.pro.luciene.ProjetoVendas.model.Situacao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luciene
  */
 public class jifSituacoes extends 
         javax.swing.JInternalFrame {
-
+    Situacao obj; //declaração do objeto
+    SituacaoData DAO;
     /**
      * Creates new form jifSituacoes
      */
     public jifSituacoes() {
         initComponents();
+        obj = new Situacao(); //instanciação do objeto
+        DAO = new SituacaoData();
     }
 
     /**
@@ -50,15 +57,36 @@ public class jifSituacoes extends
 
         jlDescricao.setText("Descrição");
 
+        jtDescricao.setEditable(false);
+
         jbNovo.setText("Novo");
+        jbNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNovoActionPerformed(evt);
+            }
+        });
 
         jbSalvar.setText("Salvar");
+        jbSalvar.setEnabled(false);
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.setEnabled(false);
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbEditar.setText("Editar");
+        jbEditar.setEnabled(false);
 
         jbExcluir.setText("Excluir");
+        jbExcluir.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +139,41 @@ public class jifSituacoes extends
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
+        jbSalvar.setEnabled(true);
+        jbCancelar.setEnabled(true);
+        jbNovo.setEnabled(false);
+        jtDescricao.setEditable(true);
+        jtDescricao.setText("");
+    }//GEN-LAST:event_jbNovoActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jbSalvar.setEnabled(false);
+        jbCancelar.setEnabled(false);
+        jbNovo.setEnabled(true);
+        jtDescricao.setEditable(false);
+        jtDescricao.setText("");
+        jlId2.setText("0");
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        try {
+            if(validarCampos()){ //verificar se os campos estão preenchidos
+                if(preencherObjeto()){ //pegar os dados da tela e colocar no objeto
+                    if(DAO.incluir(obj)){ //fazer o insert na tabela
+                        JOptionPane.showMessageDialog(this, 
+                                "Salvo com sucesso");
+                        jbCancelarActionPerformed(evt);
+                    } else {
+                        JOptionPane.showMessageDialog(this, 
+                                "Erro ao salvar");
+                    }  }   }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", 
+                    JOptionPane.ERROR_MESSAGE);   }
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCancelar;
@@ -123,4 +186,19 @@ public class jifSituacoes extends
     private javax.swing.JLabel jlId2;
     private javax.swing.JTextField jtDescricao;
     // End of variables declaration//GEN-END:variables
+private boolean validarCampos() {
+    if(jtDescricao.getText().equals("")){
+        JOptionPane.showMessageDialog(this, 
+                "Digite a descrição",
+                "Validação",JOptionPane.ERROR_MESSAGE);
+        jtDescricao.requestFocus();
+        return false;
+    }
+    return true;
+}
+private boolean preencherObjeto(){
+    obj.setDescricao(jtDescricao.getText());
+    return true;
+}
+
 }

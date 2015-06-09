@@ -16,6 +16,15 @@ import java.util.Vector;
  */
 public class SituacaoData extends Conexao {
     public SituacaoData() throws Exception {}
+    public boolean incluir(Situacao obj) throws Exception {
+        return true;
+    }
+    
+    
+    
+    
+    
+  
     public Vector<Situacao> carregarCombo() throws Exception {
         Vector<Situacao> vetor = new Vector<Situacao>();
         String sql = "Select * from TabSituacoes order by descricao";

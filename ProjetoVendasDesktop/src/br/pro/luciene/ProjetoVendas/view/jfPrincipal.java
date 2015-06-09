@@ -43,7 +43,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jdJanelas = new javax.swing.JDesktopPane();
+        jdpPrincipal = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jldesenvolvimento = new javax.swing.JLabel();
         jlData = new javax.swing.JLabel();
@@ -53,6 +53,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jmPessoas = new javax.swing.JMenuItem();
         jmProdutos = new javax.swing.JMenuItem();
         jmiTipoMovimento = new javax.swing.JMenuItem();
+        jmiSituacoes = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
         jmSair = new javax.swing.JMenuItem();
         jmMovimentos = new javax.swing.JMenu();
@@ -66,11 +67,11 @@ public class jfPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setText("jLabel1");
-        jdJanelas.add(jLabel1);
+        jdpPrincipal.add(jLabel1);
         jLabel1.setBounds(524, 20, 240, 210);
 
-        getContentPane().add(jdJanelas);
-        jdJanelas.setBounds(0, 0, 774, 610);
+        getContentPane().add(jdpPrincipal);
+        jdpPrincipal.setBounds(0, 0, 774, 610);
 
         jldesenvolvimento.setFont(new java.awt.Font("Calisto MT", 3, 14)); // NOI18N
         jldesenvolvimento.setText("Desenvolvido por Fatec Rio Preto");
@@ -100,7 +101,6 @@ public class jfPrincipal extends javax.swing.JFrame {
         jmCadastros.add(jmPessoas);
 
         jmProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK));
-        jmProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/controller.png"))); // NOI18N
         jmProdutos.setText("Produtos");
         jmProdutos.setToolTipText("Cadastro de Produtos");
         jmProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +118,15 @@ public class jfPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastros.add(jmiTipoMovimento);
+
+        jmiSituacoes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        jmiSituacoes.setText("Situações");
+        jmiSituacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSituacoesActionPerformed(evt);
+            }
+        });
+        jmCadastros.add(jmiSituacoes);
         jmCadastros.add(jSeparator1);
 
         jmSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
@@ -168,21 +177,21 @@ public class jfPrincipal extends javax.swing.JFrame {
     private void jmPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPessoasActionPerformed
       if (!verificaFrame(objForn)) {
         objForn = new jifPessoas();
-        jdJanelas.add(objForn);
+        jdpPrincipal.add(objForn);
         objForn.setVisible(true);
       } else {
-          jdJanelas.setComponentZOrder(objForn, 0);
+          jdpPrincipal.setComponentZOrder(objForn, 0);
       }
     }//GEN-LAST:event_jmPessoasActionPerformed
 
     private void jmProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProdutosActionPerformed
       if (!verificaFrame(objProd)) {
         objProd = new jifProdutos();
-        jdJanelas.add(objProd);
+        jdpPrincipal.add(objProd);
         objProd.setVisible(true);
     }
       else {
-          jdJanelas.setComponentZOrder(objProd, 0);
+          jdpPrincipal.setComponentZOrder(objProd, 0);
       }
     }//GEN-LAST:event_jmProdutosActionPerformed
 
@@ -192,9 +201,15 @@ public class jfPrincipal extends javax.swing.JFrame {
 
     private void jmiTipoMovimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoMovimentoActionPerformed
         jifTipoMovimento janela = new jifTipoMovimento();
-        jdJanelas.add(janela);
+        jdpPrincipal.add(janela);
         janela.setVisible(true);
     }//GEN-LAST:event_jmiTipoMovimentoActionPerformed
+
+    private void jmiSituacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSituacoesActionPerformed
+        jifSituacoes janela = new jifSituacoes();
+        jdpPrincipal.add(janela);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jmiSituacoesActionPerformed
 
     /**
     * @param args the command line arguments
@@ -211,7 +226,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar barra_menus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JDesktopPane jdJanelas;
+    private javax.swing.JDesktopPane jdpPrincipal;
     private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlHora;
     private javax.swing.JLabel jldesenvolvimento;
@@ -224,13 +239,14 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmRelatorios;
     private javax.swing.JMenuItem jmSair;
     private javax.swing.JMenuItem jmVenda;
+    private javax.swing.JMenuItem jmiSituacoes;
     private javax.swing.JMenuItem jmiTipoMovimento;
     // End of variables declaration//GEN-END:variables
 
     public boolean verificaFrame(JInternalFrame frame) { //construtor recebe o JDesktopPane e o JInternalFrame que deseja verififcar
          boolean valor = false;
          JInternalFrame[] results;
-         results = jdJanelas.getAllFrames(); // Retorna todos os frames em um vetor
+         results = jdpPrincipal.getAllFrames(); // Retorna todos os frames em um vetor
          for (int i = 0 ; i < results.length ; i++){
             if( results[i].equals(frame) ){  //se o frame pesquisado estiver na tela, retornar true
                valor = true;

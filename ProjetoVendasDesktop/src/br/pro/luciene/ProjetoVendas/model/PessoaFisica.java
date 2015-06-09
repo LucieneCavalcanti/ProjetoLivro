@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class PessoaFisica extends Pessoa {
+public abstract class PessoaFisica 
+extends Pessoa {
     private String rg;
     private String cpf;
     private Timestamp dataNascimento;
