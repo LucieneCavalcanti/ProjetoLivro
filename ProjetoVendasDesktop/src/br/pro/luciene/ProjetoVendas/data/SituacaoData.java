@@ -28,7 +28,8 @@ public class SituacaoData extends Conexao {
     }
     public Vector pesquisar(String arg) throws Exception {
         Vector dados = new Vector();
-        String sql="Select * from TabSituacoes where descricao like '"+arg+"%' order by descricao";
+        String sql="Select * from TabSituacoes where descricao like '"
+                +arg+"%' order by descricao";
         PreparedStatement  ps = getConexao().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

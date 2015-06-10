@@ -115,6 +115,11 @@ public class jifSituacoes extends
                 "id", "Descrição"
             }
         ));
+        jtbPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbPesquisaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtbPesquisa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,13 +224,38 @@ public class jifSituacoes extends
                 cabecalho.add("id");
                 cabecalho.add("Descrição");
                 jtbPesquisa.setModel(new DefaultTableModel(
-                        DAO.pesquisar(jtPesquisa.getText()), cabecalho));
+                        DAO.pesquisar(jtPesquisa.getText()), 
+                        cabecalho));
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, "Erro: "
                     + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jtPesquisaKeyReleased
+
+    private void jtbPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbPesquisaMouseClicked
+        try {
+            if(jtbPesquisa.getSelectedRow()>-1){
+                //declaração de variáveis auxiliares
+                int id=0;
+                String descricao="";
+                //pegar o valor da JTable e colocar nas variáveis
+                id = Integer.parseInt(jtbPesquisa.getValueAt(
+                        jtbPesquisa.getSelectedRow(), 0).toString());
+                descricao = jtbPesquisa.getValueAt(
+                        jtbPesquisa.getSelectedRow(), 1).toString();
+                //pegar o valor das variáveis e colocar nos campos
+                jlId2.setText(""+id);
+                jtDescricao.setText(descricao);
+                //habilitar os botões editar e excluir
+                jbEditar.setEnabled(true);
+                jbExcluir.setEnabled(true);
+            }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtbPesquisaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
