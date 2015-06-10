@@ -17,7 +17,27 @@ import java.util.Vector;
 public class SituacaoData extends Conexao {
     public SituacaoData() throws Exception {}
     public boolean incluir(Situacao obj) throws Exception {
-        return true;
+        String sql= "Insert into TabSituacoes (descricao) values (?)";
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ps.setString(1, obj.getDescricao());
+        int registros = ps.executeUpdate();
+        if(registros>0)
+            return true;
+        else
+            return false;
+    }
+    public Vector pesquisar(String arg) throws Exception {
+        Vector dados = new Vector();
+        String sql="Select * from TabSituacoes where descricao like '"+arg+"%' order by descricao";
+        PreparedStatement  ps = getConexao().prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Vector novalinha = new Vector();
+            novalinha.add(rs.getInt("idSituacao"));
+            novalinha.add(rs.getString("descricao"));
+            dados.add(novalinha);
+        }
+        return dados;
     }
     
     

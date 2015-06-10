@@ -51,6 +51,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         barra_menus = new javax.swing.JMenuBar();
         jmCadastros = new javax.swing.JMenu();
         jmPessoas = new javax.swing.JMenuItem();
+        jifFuncionarios = new javax.swing.JMenuItem();
         jmProdutos = new javax.swing.JMenuItem();
         jmiTipoMovimento = new javax.swing.JMenuItem();
         jmiSituacoes = new javax.swing.JMenuItem();
@@ -99,6 +100,15 @@ public class jfPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastros.add(jmPessoas);
+
+        jifFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        jifFuncionarios.setText("Funcionários");
+        jifFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jifFuncionariosActionPerformed(evt);
+            }
+        });
+        jmCadastros.add(jifFuncionarios);
 
         jmProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK));
         jmProdutos.setText("Produtos");
@@ -211,6 +221,12 @@ public class jfPrincipal extends javax.swing.JFrame {
         janela.setVisible(true);
     }//GEN-LAST:event_jmiSituacoesActionPerformed
 
+    private void jifFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jifFuncionariosActionPerformed
+        jifFuncionarios janela = new jifFuncionarios();
+        jdpPrincipal.add(janela);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jifFuncionariosActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -227,6 +243,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JDesktopPane jdpPrincipal;
+    private javax.swing.JMenuItem jifFuncionarios;
     private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlHora;
     private javax.swing.JLabel jldesenvolvimento;

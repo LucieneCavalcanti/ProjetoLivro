@@ -49,7 +49,7 @@ public class CategoriaData extends Conexao {
 
     public Categoria obter(int id) throws SQLException {
         Categoria objCategoria = null;
-        PreparedStatement pstmt = getConexao().prepareStatement("SELECT * FROM produtos where codigo = ?");
+        PreparedStatement pstmt = getConexao().prepareStatement("SELECT * FROM TabCategorias where idCategoria = ?");
         pstmt.setInt(1, id);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {

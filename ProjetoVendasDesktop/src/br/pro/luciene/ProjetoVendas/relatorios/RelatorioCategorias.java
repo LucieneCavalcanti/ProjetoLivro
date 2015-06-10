@@ -5,8 +5,7 @@ import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
-
+import net.sf.jasperreports.view.JasperViewer; 
 public class RelatorioCategorias {
 public RelatorioCategorias() {
   try 

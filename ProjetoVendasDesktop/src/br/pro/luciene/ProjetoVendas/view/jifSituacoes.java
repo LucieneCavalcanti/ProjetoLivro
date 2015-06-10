@@ -8,7 +8,9 @@ package br.pro.luciene.ProjetoVendas.view;
 
 import br.pro.luciene.ProjetoVendas.data.SituacaoData;
 import br.pro.luciene.ProjetoVendas.model.Situacao;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +25,13 @@ public class jifSituacoes extends
      */
     public jifSituacoes() {
         initComponents();
-        obj = new Situacao(); //instanciação do objeto
-        DAO = new SituacaoData();
+        try{
+            obj = new Situacao(); //instanciação do objeto
+            DAO = new SituacaoData();
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(this, "Erro: "+erro.getMessage());
+        }
+        
     }
 
     /**
@@ -45,6 +52,10 @@ public class jifSituacoes extends
         jbCancelar = new javax.swing.JButton();
         jbEditar = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jtPesquisa = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbPesquisa = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -88,14 +99,33 @@ public class jifSituacoes extends
         jbExcluir.setText("Excluir");
         jbExcluir.setEnabled(false);
 
+        jLabel1.setText("Pesquisa");
+
+        jtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPesquisaKeyReleased(evt);
+            }
+        });
+
+        jtbPesquisa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Descrição"
+            }
+        ));
+        jScrollPane1.setViewportView(jtbPesquisa);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlDescricao)
                             .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -103,7 +133,7 @@ public class jifSituacoes extends
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlId2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jbNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +142,9 @@ public class jifSituacoes extends
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtPesquisa)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,7 +165,13 @@ public class jifSituacoes extends
                     .addComponent(jbCancelar)
                     .addComponent(jbEditar)
                     .addComponent(jbExcluir))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -174,8 +212,25 @@ public class jifSituacoes extends
                     JOptionPane.ERROR_MESSAGE);   }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
+    private void jtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyReleased
+        try {
+            if(jtPesquisa.getText().length()>2){
+                Vector cabecalho = new Vector();
+                cabecalho.add("id");
+                cabecalho.add("Descrição");
+                jtbPesquisa.setModel(new DefaultTableModel(
+                        DAO.pesquisar(jtPesquisa.getText()), cabecalho));
+            }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Erro: "
+                    + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtPesquisaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
@@ -185,6 +240,8 @@ public class jifSituacoes extends
     private javax.swing.JLabel jlId;
     private javax.swing.JLabel jlId2;
     private javax.swing.JTextField jtDescricao;
+    private javax.swing.JTextField jtPesquisa;
+    private javax.swing.JTable jtbPesquisa;
     // End of variables declaration//GEN-END:variables
 private boolean validarCampos() {
     if(jtDescricao.getText().equals("")){
