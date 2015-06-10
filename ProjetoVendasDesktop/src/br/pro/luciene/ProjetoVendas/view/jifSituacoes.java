@@ -20,6 +20,7 @@ public class jifSituacoes extends
         javax.swing.JInternalFrame {
     Situacao obj; //declaração do objeto
     SituacaoData DAO;
+    int acao=0;
     /**
      * Creates new form jifSituacoes
      */
@@ -95,6 +96,11 @@ public class jifSituacoes extends
 
         jbEditar.setText("Editar");
         jbEditar.setEnabled(false);
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jbExcluir.setText("Excluir");
         jbExcluir.setEnabled(false);
@@ -188,6 +194,7 @@ public class jifSituacoes extends
         jbNovo.setEnabled(false);
         jtDescricao.setEditable(true);
         jtDescricao.setText("");
+        acao=1;
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -203,14 +210,28 @@ public class jifSituacoes extends
         try {
             if(validarCampos()){ //verificar se os campos estão preenchidos
                 if(preencherObjeto()){ //pegar os dados da tela e colocar no objeto
-                    if(DAO.incluir(obj)){ //fazer o insert na tabela
+                    if(acao==1){
+                        if(DAO.incluir(obj)){ //fazer o insert na tabela
                         JOptionPane.showMessageDialog(this, 
                                 "Salvo com sucesso");
                         jbCancelarActionPerformed(evt);
-                    } else {
+                        } else {
                         JOptionPane.showMessageDialog(this, 
                                 "Erro ao salvar");
-                    }  }   }
+                        }  
+                    }
+                    if(acao==2){
+                        if(DAO.alterar(obj)){ //fazer o insert na tabela
+                        JOptionPane.showMessageDialog(this, 
+                                "Salvo com sucesso");
+                        jbCancelarActionPerformed(evt);
+                        } else {
+                        JOptionPane.showMessageDialog(this, 
+                                "Erro ao salvar");
+                        }  
+                    }
+                }
+            }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, "Erro: "
                     + erro.getMessage(), "Erro", 
@@ -256,6 +277,16 @@ public class jifSituacoes extends
                     + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jtbPesquisaMouseClicked
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        acao=2;
+        jtDescricao.setEditable(true);
+        jbSalvar.setEnabled(true);
+        jbCancelar.setEnabled(true);
+        jbNovo.setEnabled(false);
+        jbEditar.setEnabled(false);
+        jbExcluir.setEnabled(false);
+    }//GEN-LAST:event_jbEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

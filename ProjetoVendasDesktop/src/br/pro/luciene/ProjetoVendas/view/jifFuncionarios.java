@@ -80,7 +80,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jpDadosGerais = new javax.swing.JPanel();
         jlID = new javax.swing.JLabel();
-        jtId = new javax.swing.JLabel();
+        jlId2 = new javax.swing.JLabel();
         jlNome = new javax.swing.JLabel();
         jtNome = new javax.swing.JTextField();
         jlEmail = new javax.swing.JLabel();
@@ -139,7 +139,6 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         jbConsultar.setEnabled(false);
         getContentPane().add(jbConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 120, 30));
 
-        jbSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/accept.png"))); // NOI18N
         jbSalvar.setText("Salvar");
         jbSalvar.setEnabled(false);
         jbSalvar.setMaximumSize(new java.awt.Dimension(75, 23));
@@ -152,7 +151,6 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jbSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 120, 30));
 
-        jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/fatecriopreto/loja/icones/cancel.png"))); // NOI18N
         jbCancelar.setText("Cancelar");
         jbCancelar.setEnabled(false);
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,8 +187,8 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         jlID.setText("ID:");
         jpDadosGerais.add(jlID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, -1));
 
-        jtId.setText("0");
-        jpDadosGerais.add(jtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 20, -1));
+        jlId2.setText("0");
+        jpDadosGerais.add(jlId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 20, -1));
 
         jlNome.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
         jlNome.setText("Nome:");
@@ -474,8 +472,10 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        br.pro.luciene.ProjetoVendas.extras.Validacao.limparCampos(this);
-        br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this, false);
+//        br.pro.luciene.ProjetoVendas.extras.Validacao.limparCampos(this);
+//        br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this, false);
+        limparCampos();
+        tratarCampos(true);
         jbSalvar.setEnabled(false);
         jbCancelar.setEnabled(false);
         jbNovo.setEnabled(true);
@@ -489,14 +489,17 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
-        br.pro.luciene.ProjetoVendas.extras.Validacao.limparCampos(this);
-        br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this, true);
+        //br.pro.luciene.ProjetoVendas.extras.Validacao.limparCampos(this);
+        //br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this, true);
+        limparCampos();
+        tratarCampos(true);
         jbSalvar.setEnabled(true);
         jbCancelar.setEnabled(true);
         jbNovo.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbAlterar.setEnabled(false);
-
+        jbAdicionar.setEnabled(true);
+        jbRetirar.setEnabled(true);
 }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarActionPerformed
@@ -554,6 +557,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlEndereco;
     private javax.swing.JLabel jlID;
+    private javax.swing.JLabel jlId2;
     private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlNumero;
     private javax.swing.JLabel jlRG;
@@ -572,7 +576,6 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtDepartamento;
     private javax.swing.JTextField jtEmail;
     private javax.swing.JTextField jtEndereco;
-    private javax.swing.JLabel jtId;
     private javax.swing.JTextField jtNome;
     private javax.swing.JTextField jtNumero;
     private javax.swing.JTextField jtRG;
@@ -621,7 +624,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
     }
 
     public boolean preencherObjeto() throws Exception {
-        objFun.setIdPessoa(Integer.parseInt(jtId.getText()));
+        objFun.setIdPessoa(Integer.parseInt(jlId2.getText()));
         objFun.setNome(jtNome.getText());
         objFun.setBairro(jtBairro.getText());
         objFun.setCep(jftCep.getText());
@@ -638,7 +641,6 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
             objTel.setTipo(jtbTelefones.getModel().getValueAt(i, 0).toString());
             objTel.setDdd(jtbTelefones.getModel().getValueAt(i, 1).toString());
             objTel.setTelefone(jtbTelefones.getModel().getValueAt(i, 2).toString());
-
             objFun.adicionarTelefone(objTel);
         }
         objFun.setCTPS(jtCTPS.getText());
@@ -649,5 +651,78 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 
         return true;
 
+    }
+    public void limparCampos(){
+        jlId2.setText("0");
+        jtNome.setText("");
+        jtEmail.setText("");
+        jtEndereco.setText("");
+        jtNumero.setText("");
+        jtBairro.setText("");
+        jtComplemento.setText("");
+        jftCep.setText("");
+        jtCidade.setText("");
+        jcbUf.setSelectedIndex(0);
+        jcbSituacao.setSelectedIndex(0);
+        jlCadastradoEm.setText("");
+        jcbTipoTelefone.setSelectedIndex(0);
+        jftDDD.setText("");
+        jftNumero.setText("");
+        jtRG.setText("");
+        jftCPF.setText("");
+        jdcDataNascimento.setDate(null);
+        jtCTPS.setText("");
+        jtCargo.setText("");
+        jtDepartamento.setText("");
+        jpfSenha.setText("");
+        jtbTelefones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "DDD", "Telefone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        
+    }
+    public void tratarCampos(boolean b){
+        jtNome.setEnabled(b);
+        jtEmail.setEnabled(b);
+        jtEndereco.setEnabled(b);
+        jtNumero.setEnabled(b);
+        jtBairro.setEnabled(b);
+        jtComplemento.setEnabled(b);
+        jftCep.setEnabled(b);
+        jtCidade.setEnabled(b);
+        jcbUf.setEnabled(b);
+        jcbSituacao.setEnabled(b);
+        jlCadastradoEm.setEnabled(b);
+        jcbTipoTelefone.setEnabled(b);
+        jftDDD.setEnabled(b);
+        jftNumero.setEnabled(b);
+        jtRG.setEnabled(b);
+        jftCPF.setEnabled(b);
+        jdcDataNascimento.setEnabled(b);
+        jtCTPS.setEnabled(b);
+        jtCargo.setEnabled(b);
+        jtDepartamento.setEnabled(b);
+        jpfSenha.setEnabled(b);
+        jbAdicionar.setEnabled(b);
+        jbRetirar.setEnabled(b);
     }
 }

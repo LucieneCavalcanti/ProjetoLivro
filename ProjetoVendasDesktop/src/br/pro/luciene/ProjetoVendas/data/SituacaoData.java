@@ -6,6 +6,7 @@
 package br.pro.luciene.ProjetoVendas.data;
 
 import br.pro.luciene.ProjetoVendas.model.Situacao;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
@@ -40,7 +41,25 @@ public class SituacaoData extends Conexao {
         }
         return dados;
     }
-    
+    public boolean alterar(Situacao obj) throws Exception {
+        String sql = "Update TabSituacoes set descricao=? "+
+                "where idSituacao=?";
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ps.setString(1,obj.getDescricao());
+        ps.setInt(2,obj.getIdSituacao());
+        int registros = ps.executeUpdate();
+        if(registros>0) return true;
+        else return false;
+    }
+    public boolean excluir(int id) throws Exception {
+        String sql = "Delete from TabSituacoes where idSituacao=?";
+        //CallableStatement cs = getConexao().prepareCall("{call sp_excluir(?,?,?)");
+        PreparedStatement ps = getConexao().prepareStatement(sql);
+        ps.setInt(1, id);
+        int registros=ps.executeUpdate();
+        if(registros>0) return true;
+        else return false;
+    }
     
     
     
