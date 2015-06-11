@@ -104,6 +104,11 @@ public class jifSituacoes extends
 
         jbExcluir.setText("Excluir");
         jbExcluir.setEnabled(false);
+        jbExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Pesquisa");
 
@@ -287,6 +292,21 @@ public class jifSituacoes extends
         jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
     }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
+        try{
+        if(JOptionPane.showConfirmDialog(this, 
+                "Deseja realmente excluir ?", "Confirmação", 
+                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            if(DAO.excluir(Integer.parseInt(jlId2.getText()))){
+                JOptionPane.showMessageDialog(this, "Excluído com sucesso");
+                jbCancelarActionPerformed(evt);
+            }
+        }
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(this, "Erro ao excluir:"+erro.getMessage());
+        }
+    }//GEN-LAST:event_jbExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
