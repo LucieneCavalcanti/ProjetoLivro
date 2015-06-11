@@ -10,19 +10,13 @@
  */
 package br.pro.luciene.ProjetoVendas.view;
 
-import br.pro.luciene.ProjetoVendas.data.PessoaData;
-import br.pro.luciene.ProjetoVendas.data.SituacaoData;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import br.pro.luciene.ProjetoVendas.model.Cliente;
-import br.pro.luciene.ProjetoVendas.model.Fornecedor;
 import br.pro.luciene.ProjetoVendas.model.Funcionario;
-import br.pro.luciene.ProjetoVendas.model.Pessoa;
-import br.pro.luciene.ProjetoVendas.model.Situacao;
 import br.pro.luciene.ProjetoVendas.model.Telefone;
 import java.sql.Timestamp;
-import javax.swing.DefaultComboBoxModel;
+import java.util.Date;
 
 /**
  *
@@ -32,11 +26,11 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 
     Funcionario objFun;
 
-    Vector<Telefone> vetortelefones;
-    Vector<Situacao> vetorSituacoes;
-    PessoaData DAO;
-    SituacaoData DAOSituacao;
-    Vector cabecalho;
+//    Vector<Telefone> vetortelefones;
+//    Vector<Situacao> vetorSituacoes;
+//    PessoaData DAO;
+//    SituacaoData DAOSituacao;
+//    Vector cabecalho;
 
     /**
      * Creates new form jifPessoas
@@ -47,13 +41,13 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 
             objFun = new Funcionario();
 
-            vetortelefones = new Vector<Telefone>();
-            vetorSituacoes = new Vector<Situacao>();
-            cabecalho = new Vector(); //JTable Pesquisa
-            DAO = new PessoaData();
-            DAOSituacao = new SituacaoData();
-            vetorSituacoes = DAOSituacao.carregarCombo();
-            jcbSituacao.setModel(new DefaultComboBoxModel(vetorSituacoes));
+//            vetortelefones = new Vector<Telefone>();
+//            vetorSituacoes = new Vector<Situacao>();
+//            cabecalho = new Vector(); //JTable Pesquisa
+//            DAO = new PessoaData();
+//            DAOSituacao = new SituacaoData();
+//            vetorSituacoes = DAOSituacao.carregarCombo();
+//            jcbSituacao.setModel(new DefaultComboBoxModel(vetorSituacoes));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     "Erro ao abrir: "
@@ -323,7 +317,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
                 jbRetirarActionPerformed(evt);
             }
         });
-        jpDadosGerais.add(jbRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 40, -1));
+        jpDadosGerais.add(jbRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 60, -1));
 
         jbAdicionar.setText("+");
         jbAdicionar.setEnabled(false);
@@ -332,7 +326,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
                 jbAdicionarActionPerformed(evt);
             }
         });
-        jpDadosGerais.add(jbAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 40, -1));
+        jpDadosGerais.add(jbAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 60, -1));
 
         jtbTelefones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -453,21 +447,16 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         try {
-            if (br.pro.luciene.ProjetoVendas.extras.Validacao.validarCampos(this)) {
+            if (validarCampos()) {
                 if (preencherObjeto()) {
-                    if (DAO.incluir(objFun)) {
-                        JOptionPane.showMessageDialog(this, "Cliente salvo !");
-                        jbCancelarActionPerformed(evt);
-                    } else {
-                        throw new Exception("Erro ao incluir (DAO)");
-                    }
+                    JOptionPane.showMessageDialog(this, 
+                            "Funcionário salvo !");
+                    jbCancelarActionPerformed(evt);
                 }
             }
-
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar:"
                     + erro.getMessage());
-            erro.printStackTrace();
         }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
@@ -475,7 +464,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 //        br.pro.luciene.ProjetoVendas.extras.Validacao.limparCampos(this);
 //        br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this, false);
         limparCampos();
-        tratarCampos(true);
+        tratarCampos(false);
         jbSalvar.setEnabled(false);
         jbCancelar.setEnabled(false);
         jbNovo.setEnabled(true);
@@ -590,7 +579,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
 
     }
 
-    public boolean validar_campos() {
+    public boolean validarCampos() {
         if (jtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(this,
                     "Digite o campo nome",
@@ -619,6 +608,55 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
             jftCPF.requestFocus();
             return false;
         }
+        if(jtbTelefones.getRowCount()==0){
+            JOptionPane.showMessageDialog(this,
+                    "Digite pelo menos um Telefone",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jcbTipoTelefone.requestFocus();
+            return false;
+        }
+        if (jpfSenha.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite o campo Senha",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jpfSenha.requestFocus();
+            return false;
+        }
+        if (jdcDataNascimento.getDate()==null) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite o campo Data de Nascimento",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jdcDataNascimento.requestFocus();
+            return false;
+        }
+        if (jtCTPS.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite o campo CTPS",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jtCTPS.requestFocus();
+            return false;
+        }
+        if (jtCargo.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite o campo Cargo",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jtCargo.requestFocus();
+            return false;
+        }
+        if (jtDepartamento.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite o campo Departamento",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jtDepartamento.requestFocus();
+            return false;
+        }
+        if (jcbSituacao.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(this,
+                    "Selecione a Situação",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jcbSituacao.requestFocus();
+            return false;
+        }
 
         return true;
     }
@@ -630,17 +668,23 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         objFun.setCep(jftCep.getText());
         objFun.setCidade(jtCidade.getText());
         objFun.setComplemento(jtComplemento.getText());
-        objFun.setDataCadastro(new Timestamp(0));//-->
+        
         objFun.setEmail(jtEmail.getText());
         objFun.setEndereco(jtEndereco.getText());
         objFun.setNumero(jtNumero.getText());
         objFun.setUf(jcbUf.getSelectedItem().toString());
-        objFun.setSituacao(vetorSituacoes.get(jcbSituacao.getSelectedIndex()));
+        //objFun.setSituacao(vetorSituacoes.get(jcbSituacao.getSelectedIndex()));
+        objFun.setDataCadastro(new Timestamp(new Date().getTime()));
+        objFun.setDataNascimento(new Timestamp(jdcDataNascimento.
+                getDate().getTime()));
         for (int i = 0; i < jtbTelefones.getRowCount(); i++) {
             Telefone objTel = new Telefone();
-            objTel.setTipo(jtbTelefones.getModel().getValueAt(i, 0).toString());
-            objTel.setDdd(jtbTelefones.getModel().getValueAt(i, 1).toString());
-            objTel.setTelefone(jtbTelefones.getModel().getValueAt(i, 2).toString());
+            objTel.setTipo(jtbTelefones.getModel().
+                    getValueAt(i, 0).toString());
+            objTel.setDdd(jtbTelefones.getModel().
+                    getValueAt(i, 1).toString());
+            objTel.setTelefone(jtbTelefones.getModel().
+                    getValueAt(i, 2).toString());
             objFun.adicionarTelefone(objTel);
         }
         objFun.setCTPS(jtCTPS.getText());
@@ -675,13 +719,10 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         jtCargo.setText("");
         jtDepartamento.setText("");
         jpfSenha.setText("");
+        //limpar a tabela
         jtbTelefones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tipo", "DDD", "Telefone"
-            }
+            new Object [][] {},
+            new String [] {"Tipo", "DDD", "Telefone"}
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
