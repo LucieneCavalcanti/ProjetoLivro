@@ -115,12 +115,20 @@
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmCategorias">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiRelCategorias">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Categorias"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCategoriasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiRelCategoriasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiRelModulos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xf3;dulos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiRelModulosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
