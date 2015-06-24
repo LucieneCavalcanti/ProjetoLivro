@@ -7,9 +7,9 @@ Tabela de Tipo de entrada
 
 
 */
-create dataBase bdVendas2;
+create dataBase bdVendas;
 
-use bdVendas2;
+use bdVendas;
 
 create table TabSituacoes(
 idSituacao int not null primary key identity ,
