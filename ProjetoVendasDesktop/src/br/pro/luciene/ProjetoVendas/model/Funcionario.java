@@ -12,20 +12,33 @@ import java.util.List;
  *
  * @author Luciene
  */
-public class Funcionario extends PessoaFisica 
-implements AcessarSistema {
+public class Funcionario extends PessoaFisica {
+//implements AcessarSistema {
     private String CTPS;
     private String cargo;
     private String departamento;
+    private String senha;
 
     public Funcionario() {
     }
 
-    public Funcionario(String CTPS, String cargo, String departamento, String rg, String cpf, Timestamp dataNascimento, String senha, List<Permissao> permissoes, int idPessoa, String nome, String email, String endereco, String numero, String bairro, String complemento, String cep, String cidade, String uf, Situacao situacao, Timestamp dataCadastro, List<Telefone> telefones) {
-        super(rg, cpf, dataNascimento, senha, permissoes, idPessoa, nome, email, endereco, numero, bairro, complemento, cep, cidade, uf, situacao, dataCadastro, telefones);
+    public Funcionario(String CTPS, String cargo, 
+            String departamento, String senha, String rg, 
+            String cpf, Timestamp dataNascimento, 
+            //String senha, List<Permissao> permissoes, 
+            int idPessoa, String nome, String email, 
+            String endereco, String numero, String bairro, 
+            String complemento, String cep, String cidade, 
+            String uf, Situacao situacao, 
+            Timestamp dataCadastro, List<Telefone> telefones) {
+        //super(rg, cpf, dataNascimento, senha, permissoes, idPessoa, nome, email, endereco, numero, bairro, complemento, cep, cidade, uf, situacao, dataCadastro, telefones);
+        super(rg, cpf, dataNascimento, idPessoa, nome, email, 
+                endereco, numero, bairro, complemento, cep, 
+                cidade, uf, situacao, dataCadastro, telefones);
         this.CTPS = CTPS;
         this.cargo = cargo;
         this.departamento = departamento;
+        this.senha = senha;
     }
 
     public String getCTPS() {
@@ -51,16 +64,22 @@ implements AcessarSistema {
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-
-    @Override
-    public boolean login() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setSenha(String senha){
+        this.senha = senha;
+    }
+    public String getSenha(){
+        return senha;
     }
 
-    @Override
-    public List<Permissao> verificarPermissoes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public boolean login() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public List<Permissao> verificarPermissoes() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     public String toString() {
         return getNome();
     }

@@ -23,7 +23,7 @@ public void lerDados(){
     }
 
     public Cliente(String empresa, String rg, String cpf, Timestamp dataNascimento, String senha, List<Permissao> permissoes, int idPessoa, String nome, String email, String endereco, String numero, String bairro, String complemento, String cep, String cidade, String uf, Situacao situacao, Timestamp dataCadastro, List<Telefone> telefones) {
-        super(rg, cpf, dataNascimento, senha, permissoes, idPessoa, nome, email, endereco, numero, bairro, complemento, cep, cidade, uf, situacao, dataCadastro, telefones);
+        super(rg, cpf, dataNascimento, idPessoa, nome, email, endereco, numero, bairro, complemento, cep, cidade, uf, situacao, dataCadastro, telefones);
         this.empresa = empresa;
     }
 

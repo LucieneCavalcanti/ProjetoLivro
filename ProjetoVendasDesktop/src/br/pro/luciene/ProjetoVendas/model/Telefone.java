@@ -18,7 +18,8 @@ public class Telefone {
     public Telefone() {
     }
 
-    public Telefone(int sequencia, String tipo, String ddd, String telefone) {
+    public Telefone(int sequencia, String tipo, String ddd,
+            String telefone) {
         this.sequencia = sequencia;
         this.tipo = tipo;
         this.ddd = ddd;

@@ -22,14 +22,16 @@ public abstract class Pessoa {
 
     //public abstract void lerDados();
     public Pessoa() {
-        
         situacao = new Situacao();
         dataCadastro = new Timestamp(Calendar.
                 getInstance().getTime().getTime());
-        telefones = new ArrayList<Telefone>();
-    }
+        telefones = new ArrayList<Telefone>();  }
 
-    public Pessoa(int idPessoa, String nome, String email, String endereco, String numero, String bairro, String complemento, String cep, String cidade, String uf, Situacao situacao, Timestamp dataCadastro, List<Telefone> telefones) {
+    public Pessoa(int idPessoa, String nome, String email, 
+        String endereco, String numero, String bairro, 
+        String complemento, String cep, String cidade, 
+        String uf, Situacao situacao, Timestamp dataCadastro,
+        List<Telefone> telefones) {
         this.idPessoa = idPessoa;
         this.nome = nome;
         this.email = email;
