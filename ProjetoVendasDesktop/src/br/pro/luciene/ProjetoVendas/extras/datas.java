@@ -60,5 +60,6 @@ public class datas {
         System.out.println(df.format(data2));
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println(formato.format(data2));
+        System.out.println(pegarDataSistema());
     }
 }

@@ -450,6 +450,24 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
             if (validarCampos()) {
                 if (preencherObjeto()) {
                     JOptionPane.showMessageDialog(this, 
+                            "id:"+objFun.getIdPessoa() +
+                            "\nNome:"+objFun.getNome() +
+                            "\nE-mail:"+objFun.getEmail() +
+                            "\nEndereço:"+objFun.getEndereco() +
+                            "\nNúmero:"+objFun.getNumero()+
+                            "\nBairro:"+objFun.getBairro() +
+                            "\nComplemento:"+objFun.getComplemento()+
+                            "\nCidade:"+objFun.getCidade() +
+                            "\nUF:"+objFun.getUf() +
+                            "\nCEP:"+objFun.getCep()+
+                            "\nRG:"+objFun.getRg() +
+                            "\nCPF:"+objFun.getCpf() +
+                            "\nData Nascimento:"+objFun.getDataNascimento()+
+                            "\nCTPS:"+ objFun.getCTPS() +
+                            "\nCargo:" + objFun.getCargo() +
+                            "\nDepartamento:" + objFun.getDepartamento() +
+                            "\nSenha:" + objFun.getSenha() +
+                                    
                             "Funcionário salvo !");
                     jbCancelarActionPerformed(evt);
                 }
@@ -587,9 +605,23 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
             jtNome.requestFocus();
             return false;
         }
+        if (jtNome.getText().length()>200) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite no máximo 200 caracteres para o campo nome",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jtNome.requestFocus();
+            return false;
+        }
         if (jtEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(this,
                     "Digite o campo e-mail",
+                    "Validação", JOptionPane.ERROR_MESSAGE);
+            jtEmail.requestFocus();
+            return false;
+        }
+        if (jtEmail.getText().length()>100) {
+            JOptionPane.showMessageDialog(this,
+                    "Digite apenas 100 caracteres no campo e-mail",
                     "Validação", JOptionPane.ERROR_MESSAGE);
             jtEmail.requestFocus();
             return false;
@@ -668,7 +700,6 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         objFun.setCep(jftCep.getText());
         objFun.setCidade(jtCidade.getText());
         objFun.setComplemento(jtComplemento.getText());
-        
         objFun.setEmail(jtEmail.getText());
         objFun.setEndereco(jtEndereco.getText());
         objFun.setNumero(jtNumero.getText());
@@ -677,6 +708,11 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
         objFun.setDataCadastro(new Timestamp(new Date().getTime()));
         objFun.setDataNascimento(new Timestamp(jdcDataNascimento.
                 getDate().getTime()));
+        objFun.setCTPS(jtCTPS.getText());
+        objFun.setCargo(jtCargo.getText());
+        objFun.setCpf(jftCPF.getText());
+        objFun.setRg(jtRG.getText());
+        objFun.setSenha(jpfSenha.getText());
         for (int i = 0; i < jtbTelefones.getRowCount(); i++) {
             Telefone objTel = new Telefone();
             objTel.setTipo(jtbTelefones.getModel().
@@ -687,11 +723,7 @@ public class jifFuncionarios extends javax.swing.JInternalFrame {
                     getValueAt(i, 2).toString());
             objFun.adicionarTelefone(objTel);
         }
-        objFun.setCTPS(jtCTPS.getText());
-        objFun.setCargo(jtCargo.getText());
-        objFun.setCpf(jftCPF.getText());
-        objFun.setRg(jtRG.getText());
-        objFun.setSenha(jpfSenha.getText());
+        
 
         return true;
 

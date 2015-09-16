@@ -39,27 +39,27 @@ create table TabPessoas (
 create table TabTelefones(
     sequencia int not null primary key identity ,
     idPessoa int not null references TabPessoas,
-    tipo varchar(20),
-    ddd varchar(3),
-    numero varchar(10)
+    tipo varchar(20) not null,
+    ddd varchar(3) not null,
+    numero varchar(10) not null
 );
 
 create table TabPessoaJuridica(
 	idPessoaJuridica int not null primary key references TabPessoas,
 	cnpj varchar(15) not null,
-	ie varchar(15)
+	ie varchar(15) not null
 );
 
 create table TabPessoaFisica(
 	idPessoaFisica int not null primary key references TabPessoas,
 	cpf varchar(11) unique,
-	rg varchar(15),
+	rg varchar(15) not null,
 	dataNascimento Date
 );
 
 create table TabClientes (
 	idCliente int not null primary key references TabPessoaFisica,
-	empresa varchar(100)
+	empresa varchar(100) not null
 	
 );
 
@@ -71,14 +71,14 @@ create table TabFornecedores(
 
 create table TabFuncionarios(
 	idFuncionario int not null primary key references TabPessoaFisica,
-	ctps varchar(25),
-	cargo varchar(50),
-	departamento varchar(100)	
+	ctps varchar(25) not null,
+	cargo varchar(50) not null,
+	departamento varchar(100) not null	
 );
 
 Create table TabUsuarios(	
 	idUsuario int not null primary key references TabPessoaFisica,
-	senha varchar(32)
+	senha varchar(20) not null
 );
 
 create table TabPermissoesUsuario(

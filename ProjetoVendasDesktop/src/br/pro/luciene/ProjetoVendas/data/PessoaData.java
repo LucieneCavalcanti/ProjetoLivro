@@ -40,7 +40,7 @@ public class PessoaData extends Conexao{
         ps.setString(9, pessoa.getUf());
         ps.setInt(10, pessoa.getSituacao().getIdSituacao());
         ps.setTimestamp(11, pessoa.getDataCadastro());
-        if(ps.executeUpdate()>0){ //executar o insert pessoa
+        if(ps.executeUpdate()>0){ //se executar o insert pessoa
             int idPessoa = 0;
             String sqlPessoa="Select max(idPessoa) as id from TabPessoas";
             PreparedStatement psPessoa = getConexao().prepareStatement(sqlPessoa);
@@ -62,7 +62,7 @@ public class PessoaData extends Conexao{
                     PreparedStatement ps3 = getConexao().prepareStatement(sql3);
                     ps3.setInt(1,idPessoa);
                     ps3.setString(2,cliente.getEmpresa());
-                    if(ps3.executeUpdate()>0){
+                    if(ps3.executeUpdate()>0){//incluir telefones
                         //telefones
                         if(incluirTelefones(cliente.getTelefones(), idPessoa))
                             getConexao().commit(); 
