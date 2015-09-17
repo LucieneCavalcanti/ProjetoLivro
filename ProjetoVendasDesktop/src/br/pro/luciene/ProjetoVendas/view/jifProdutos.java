@@ -54,16 +54,17 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         jbCancelar = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
-        jbPesquisar = new javax.swing.JButton();
         jbNovo = new javax.swing.JButton();
         jlCodigo = new javax.swing.JLabel();
         jlNome = new javax.swing.JLabel();
         jlCategoria = new javax.swing.JLabel();
         jlContato = new javax.swing.JLabel();
         jtDescricao = new javax.swing.JTextField();
-        jbSair = new javax.swing.JButton();
         jcbCategoria = new javax.swing.JComboBox();
-        jlImagem = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -89,7 +90,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbConsultar);
-        jbConsultar.setBounds(270, 250, 120, 23);
+        jbConsultar.setBounds(290, 230, 120, 23);
 
         jbSalvar.setText("Salvar");
         jbSalvar.setEnabled(false);
@@ -102,7 +103,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalvar);
-        jbSalvar.setBounds(30, 220, 120, 23);
+        jbSalvar.setBounds(50, 200, 120, 23);
 
         jbCancelar.setText("Cancelar");
         jbCancelar.setEnabled(false);
@@ -112,7 +113,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbCancelar);
-        jbCancelar.setBounds(150, 220, 120, 23);
+        jbCancelar.setBounds(170, 200, 120, 23);
 
         jbExcluir.setText("Excluir");
         jbExcluir.setEnabled(false);
@@ -122,7 +123,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbExcluir);
-        jbExcluir.setBounds(270, 220, 120, 23);
+        jbExcluir.setBounds(290, 200, 120, 23);
 
         jbAlterar.setText("Alterar");
         jbAlterar.setEnabled(false);
@@ -132,16 +133,7 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbAlterar);
-        jbAlterar.setBounds(150, 250, 120, 23);
-
-        jbPesquisar.setText("Pesquisar");
-        jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbPesquisarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jbPesquisar);
-        jbPesquisar.setBounds(230, 40, 110, 23);
+        jbAlterar.setBounds(170, 230, 120, 23);
 
         jbNovo.setText("Novo");
         jbNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -150,52 +142,50 @@ public class jifProdutos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbNovo);
-        jbNovo.setBounds(30, 250, 120, 23);
+        jbNovo.setBounds(50, 230, 120, 23);
 
-        jlCodigo.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlCodigo.setText("Código:");
+        jlCodigo.setText("Código");
         getContentPane().add(jlCodigo);
-        jlCodigo.setBounds(50, 40, 70, 17);
+        jlCodigo.setBounds(50, 40, 70, 14);
 
-        jlNome.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlNome.setText("Descrição:");
+        jlNome.setText("Descrição");
         getContentPane().add(jlNome);
-        jlNome.setBounds(50, 70, 70, 17);
+        jlNome.setBounds(50, 70, 70, 14);
 
-        jlCategoria.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlCategoria.setText("Categoria:");
+        jlCategoria.setText("Categoria");
         getContentPane().add(jlCategoria);
-        jlCategoria.setBounds(50, 100, 70, 17);
+        jlCategoria.setBounds(50, 100, 70, 14);
 
-        jlContato.setFont(new java.awt.Font("Book Antiqua", 3, 14)); // NOI18N
-        jlContato.setText("Preço de Venda:");
+        jlContato.setText("Preço de Venda");
         getContentPane().add(jlContato);
-        jlContato.setBounds(50, 130, 120, 17);
+        jlContato.setBounds(50, 130, 120, 14);
 
         jtDescricao.setEditable(false);
         jtDescricao.setToolTipText("Digite a descrição");
         getContentPane().add(jtDescricao);
         jtDescricao.setBounds(130, 70, 280, 20);
 
-        jbSair.setText("Sair");
-        jbSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jbSair);
-        jbSair.setBounds(390, 250, 110, 23);
-
         jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<selecione>", "Limpeza", "Bebidas" }));
         getContentPane().add(jcbCategoria);
         jcbCategoria.setBounds(130, 100, 280, 20);
 
-        jlImagem.setText("Imagem");
-        jlImagem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jlImagem);
-        jlImagem.setBounds(444, 10, 80, 110);
+        jLabel1.setText("Qtde Mínima");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 170, 70, 14);
 
-        setBounds(0, 0, 568, 327);
+        jLabel2.setText("0");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(130, 170, 40, 14);
+
+        jLabel3.setText("Qtde Atual");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(200, 170, 70, 14);
+
+        jLabel4.setText("0");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(270, 170, 34, 14);
+
+        setBounds(0, 0, 489, 327);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
@@ -254,31 +244,6 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         }
 }//GEN-LAST:event_jbExcluirActionPerformed
 
-    private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-    try{
-    //   objProd = DAO.Obtem(Integer.parseInt(jtCodigo.getText()));
-       if (obj == null){
-           JOptionPane.showMessageDialog(this, "Registro não encontrado.");
-       }
-       else {
-//           jtDescricao.setText(objProd.getDescricao());
-//           jftQtde.setText(String.valueOf(objProd.getQuantidade()));
-//           jftPrecoCusto.setText(String.valueOf(objProd.getPreco_custo()));
-//           jftPrecoVenda.setText(String.valueOf(objProd.getPreco_venda()));
-//           jcbCategoria.setSelectedItem(objProd.getCategoria().getDescricao().trim());
-     //      jdcData.setDate(objProd.getData());
-           jtCodigo.setEditable(false);
-           jbAlterar.setEnabled(true);
-           jbNovo.setEnabled(false);
-           jbCancelar.setEnabled(true);
-       }
-    }
-    catch(Exception erro) {
-       JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro.getMessage());
-    }
-
-}//GEN-LAST:event_jbPesquisarActionPerformed
-
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         acao = 1;
         br.pro.luciene.ProjetoVendas.extras.Validacao.tratarCampos(this,true);
@@ -287,10 +252,6 @@ public class jifProdutos extends javax.swing.JInternalFrame {
         jbNovo.setEnabled(false);
         jcbCategoria.setEnabled(true);
 }//GEN-LAST:event_jbNovoActionPerformed
-
-    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
-        dispose();
-}//GEN-LAST:event_jbSairActionPerformed
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
     acao = 2;        // TODO add your handling code here:
@@ -302,20 +263,21 @@ public class jifProdutos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbAlterar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbConsultar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
-    private javax.swing.JButton jbPesquisar;
-    private javax.swing.JButton jbSair;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox jcbCategoria;
     private javax.swing.JFormattedTextField jftPrecoVenda;
     private javax.swing.JLabel jlCategoria;
     private javax.swing.JLabel jlCodigo;
     private javax.swing.JLabel jlContato;
-    private javax.swing.JLabel jlImagem;
     private javax.swing.JLabel jlNome;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtDescricao;

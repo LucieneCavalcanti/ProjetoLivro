@@ -25,7 +25,7 @@ public class Conexao {
             conexao = DriverManager.getConnection(url,usuario,senha);
     }
     
-//    public Conexao() throws Exception {
+//    public Conexao() throws Exception{
 //        Class.forName("net.sourceforge.jtds.jdbc.Driver");
 //        String url = "jdbc:jtds:sqlserver://WIN-FCVHJ306E61:1433/bdVendas";
 //        conexao = DriverManager.getConnection(url,"sa","dba");

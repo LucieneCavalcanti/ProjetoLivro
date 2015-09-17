@@ -5,8 +5,6 @@
 
 package br.pro.luciene.ProjetoVendas.model;
 
-import java.util.Date;
-
 /**
  *
  * @author Administrador

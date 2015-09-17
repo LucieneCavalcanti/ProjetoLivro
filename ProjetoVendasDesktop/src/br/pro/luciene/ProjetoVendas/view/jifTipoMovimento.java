@@ -47,7 +47,7 @@ public class jifTipoMovimento extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Cadastro de Movimentos");
+        setTitle("Cadastro de Tipos de Movimentos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlId.setText("id");
