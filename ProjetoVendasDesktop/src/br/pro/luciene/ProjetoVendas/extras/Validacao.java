@@ -58,7 +58,6 @@ public class Validacao {
             }
             if (c instanceof JComboBox) {
                 jcb = (JComboBox) c;
-                System.out.println(c.getName());
                 if (jcb.getSelectedIndex() == 0 && 
                         jcb.getToolTipText()!=null) {
                     JOptionPane.showMessageDialog(null, jcb.getToolTipText(), "Validação", JOptionPane.ERROR_MESSAGE);

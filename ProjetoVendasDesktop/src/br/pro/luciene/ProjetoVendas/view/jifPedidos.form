@@ -199,6 +199,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Selecione o Funcion&#xe1;rio"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>

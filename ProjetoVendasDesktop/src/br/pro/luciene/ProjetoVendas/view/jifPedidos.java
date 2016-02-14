@@ -152,6 +152,7 @@ public class jifPedidos extends javax.swing.JInternalFrame {
         jpDadosPedido.add(jcbTipoMovimento);
         jcbTipoMovimento.setBounds(170, 80, 160, 20);
 
+        jcbFuncionario.setToolTipText("Selecione o Funcionário");
         jcbFuncionario.setEnabled(false);
         jpDadosPedido.add(jcbFuncionario);
         jcbFuncionario.setBounds(140, 50, 160, 20);
@@ -370,6 +371,10 @@ public class jifPedidos extends javax.swing.JInternalFrame {
 //                    "Registro Salvo com Sucesso!",
 //                    "Mensagem", JOptionPane.INFORMATION_MESSAGE);
 //        }
+        if(br.pro.luciene.ProjetoVendas.extras.
+                Validacao.validarCampos(this)){
+            
+        }
 }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed

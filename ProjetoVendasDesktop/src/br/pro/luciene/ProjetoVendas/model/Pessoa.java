@@ -19,7 +19,6 @@ public abstract class Pessoa {
     private Situacao situacao; //1 situacao
     private Timestamp dataCadastro;
     private List<Telefone> telefones; //muitos telefones
-
     //public abstract void lerDados();
     public Pessoa() {
         situacao = new Situacao();
